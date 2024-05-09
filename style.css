@@ -3,6 +3,9 @@ body {
     margin: 0;
     font-family: 'Manrope';
     font-weight: 400;
+    font-size: 2rem;
+    color: var(---text);
+    background-image: var(---background);
 }
 #page {
     display: flex;
@@ -10,14 +13,27 @@ body {
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(to bottom right, rgb(68, 59, 40, 0.8) , rgb(68, 45, 45, 0.8));
 }
 #card {
     width: 90%;
     height: 90%;
-    background-color: rgba(255,255,255,0.5);
+    background-color: var(---card);
     border-radius: 20px;
     backdrop-filter: blur(20px);
     box-shadow: 0 1px 12px rgba(0,0,0,0.25);
     border: 1px solid rgba(255,255,255,0.3);
+}
+#title {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+.dark-theme {
+    ---background: linear-gradient(to bottom right, rgb(68, 59, 40, 0.8) , rgb(68, 45, 45, 0.8));;
+    ---text: #d4d4d4;
+    ---card: rgba(20, 20, 20, 0.5);
+}.light-theme {
+    ---background: linear-gradient(to bottom right, rgba(160, 160, 160, 0.8) , rgba(245, 182, 182, 0.8));;
+    ---text: #292929;
+    ---card: rgba(255, 255, 255, 0.5);
 }
