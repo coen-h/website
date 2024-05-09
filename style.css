@@ -1,5 +1,8 @@
 body {
+    display: flex;
     margin: 0;
+    font-family: 'Manrope';
+    font-weight: 400;
 }
 #page {
     display: flex;
@@ -7,11 +10,11 @@ body {
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(65, 65, 65);
+    background-image: linear-gradient(to bottom right, rgb(68, 59, 40, 0.8) , rgb(68, 45, 45, 0.8));
 }
 #card {
-    width: 60%;
-    height: 60%;
+    width: 90%;
+    height: 90%;
     background-color: rgba(255,255,255,0.5);
     border-radius: 20px;
     backdrop-filter: blur(20px);
