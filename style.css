@@ -51,6 +51,7 @@ body {
     position: relative;
     box-shadow: 1px 1px 1rem rgb(26 26 26 / 15%);
     margin: 1rem;
+    animation: growAnimation ease 2s;
 }
 #video {
     position: fixed;
@@ -109,6 +110,7 @@ body {
 #message {
     font-size: 1rem;
     margin: 1rem;
+    animation: growAnimation ease 2s;
 }
 #icons {
     margin-right: 10px;
@@ -130,5 +132,13 @@ body {
     }
     100% {
         opacity: 1;
+    }
+}
+@keyframes growAnimation {
+    0% {
+        scale: 0.9;
+    }
+    100% {
+        scale: 1;
     }
 }
