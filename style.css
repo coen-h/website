@@ -1,6 +1,120 @@
-h1 {
-    font-size: 30px;
+* {
+    font-family: 'Manrope';
+    color: #d4d4d4;
+    font-weight: 400;
+    text-decoration: none;
 }
-h2 {
-    font-size: 15px;
+body {
+    display: flex;
+    margin: 0;
+    font-size: 2rem;
+    background-image: linear-gradient(to bottom right, rgba(33, 37, 36, 0.9) , rgba(21, 43, 34, 0.9));
+}
+p {
+    margin: 0;
+}
+#page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+#card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 94.5%;
+    height: 90%;
+    background-color: rgba(20, 20, 20, 0.5);;
+    border-radius: 1.25rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+#card-top {
+    display:flex;
+    justify-content: space-between;
+}
+#title {
+    display: block;
+    z-index: 0;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    background-color: rgba(255,255,255,.05);
+    border-radius: 1.25rem 0rem 0rem 0rem;
+    padding: 0.5rem 1rem;
+    transition: all .2s;
+    position: relative;
+    box-shadow: 1px 1px 1rem rgb(26 26 26 / 15%);
+    margin: 1rem;
+}
+#greeting {
+    margin: 0;
+}
+#video {
+    position: fixed;
+    width: 94.5%;
+    height: 90%;
+    border-radius: 1.25rem;
+    z-index: -1;
+    object-fit: cover;
+} 
+#button-grid {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    gap: 1rem;
+} 
+#grid {
+    transition: all .2s;
+    position: relative;
+    max-width: fit-content;
+    display: block;
+    margin: 0 auto;
+}
+#grid:hover {
+    transform: translate(-1.5px);
+}
+.button {
+    font-size: 1.25rem;
+    display: block;
+    z-index: 0;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    background-color: rgba(255,255,255,.1);
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    transition: all .2s;
+    position: relative;
+    box-shadow: 1px 1px 1rem rgb(26 26 26 / 15%);
+}
+#button {
+    border-radius: 0.25rem 1.25rem 0.25rem 0.25rem;
+}
+.button:hover {
+    transform: translate(-1.5px);
+}
+#card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+#message {
+    font-size: 1rem;
+    margin: 1rem;
+}
+#icons {
+    margin-right: 10px;
+}
+.icon {
+    height: 50px;
+    margin: 0.25rem;
+    transition: transform .2s ease-in-out;
+    transform: scale(1.01);
+}
+.icon:hover {
+    transform: scale(1.1);
 }
