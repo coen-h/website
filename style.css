@@ -3,15 +3,13 @@
     color: #d4d4d4;
     font-weight: 400;
     text-decoration: none;
+    margin: 0;
 }
 body {
     display: flex;
     margin: 0;
     font-size: 2rem;
-    background-image: linear-gradient(to bottom right, rgba(33, 37, 36, 0.9) , rgba(21, 43, 34, 0.9));
-}
-p {
-    margin: 0;
+    background-image: linear-gradient(to bottom right, rgba(28, 37, 35, 0.9) , rgba(24, 39, 33, 0.9));
 }
 #page {
     display: flex;
@@ -36,6 +34,9 @@ p {
     display:flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 #title {
     display: block;
@@ -50,9 +51,6 @@ p {
     position: relative;
     box-shadow: 1px 1px 1rem rgb(26 26 26 / 15%);
     margin: 1rem;
-}
-#greeting {
-    margin: 0;
 }
 #video {
     position: fixed;
@@ -102,6 +100,9 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 #message {
     font-size: 1rem;
@@ -118,4 +119,12 @@ p {
 }
 .icon:hover {
     transform: scale(1.1);
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
