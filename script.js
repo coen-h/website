@@ -6,16 +6,16 @@ const greetingElement = document.getElementById("greeting");
 
         let greeting;
         if(hours >= 6 && hours <= 11){
-            greeting ='Good Morning';
+            greeting ='Morning!';
         }
         else if(hours >= 12 && hours <= 17){
-            greeting = 'Good Afternoon';
+            greeting = 'Having a good day?';
         }
         else if(hours >= 18 && hours <= 21){
-            greeting = 'Good Evening';
+            greeting = 'Hey there!';
         }
         else if(hours >= 22 && hours <= 5){
-            greeting = 'Good Night';
+            greeting = 'Good night!';
         }
         else{
             greeting = 'Hello!'

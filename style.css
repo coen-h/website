@@ -21,7 +21,10 @@ p {
     height: 100vh;
 }
 #card {
-    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 94.5%;
     height: 90%;
     background-color: rgba(20, 20, 20, 0.5);;
     border-radius: 1.25rem;
@@ -52,7 +55,7 @@ p {
 }
 #video {
     position: fixed;
-    width: 90%;
+    width: 94.5%;
     height: 90%;
     border-radius: 1.25rem;
     z-index: -1;
@@ -64,17 +67,18 @@ p {
     padding: 1rem;
     gap: 1rem;
 } 
-a {
+#grid {
     transition: all .2s;
     position: relative;
     max-width: fit-content;
     display: block;
     margin: 0 auto;
 }
-a:hover {
+#grid:hover {
     transform: translate(-1.5px);
 }
 .button {
+    font-size: 1.25rem;
     display: block;
     z-index: 0;
     -webkit-backdrop-filter: blur(10px);
@@ -99,8 +103,18 @@ a:hover {
     align-items: flex-end;
 }
 #message {
+    font-size: 1rem;
     margin: 1rem;
 }
-#icon {
-    margin: 1rem;
+#icons {
+    margin-right: 10px;
+}
+.icon {
+    height: 50px;
+    margin: 0.25rem;
+    transition: transform .2s ease-in-out;
+    transform: scale(1.01);
+}
+.icon:hover {
+    transform: scale(1.1);
 }
