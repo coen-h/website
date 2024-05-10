@@ -27,14 +27,14 @@ body {
     background-color: rgba(20, 20, 20, 0.5);;
     border-radius: 1.25rem;
     backdrop-filter: blur(20px);
-    box-shadow: 0 1px 12px rgba(0,0,0,0.25);
+    box-shadow: 10px 10px 12px rgba(0,0,0,0.25);
     border: 1px solid rgba(255,255,255,0.3);
 }
 #card-top {
     display:flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    animation: fadeInAnimation ease 3s;
+    animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -45,7 +45,7 @@ body {
     backdrop-filter: blur(10px);
     text-align: center;
     background-color: rgba(255,255,255,.05);
-    border-radius: 1.25rem 0rem 0rem 0rem;
+    border-radius: 1.25rem 0.25rem 0.25rem 0.25rem;
     padding: 0.5rem 1rem;
     transition: all .2s;
     position: relative;
@@ -73,28 +73,30 @@ body {
     display: block;
     margin: 0 auto;
 }
-#grid:hover {
-    transform: translate(-1.5px);
-}
 .button {
     font-size: 1.25rem;
     display: block;
-    z-index: 0;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     text-align: center;
     background-color: rgba(255,255,255,.1);
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
-    transition: all .2s;
-    position: relative;
-    box-shadow: 1px 1px 1rem rgb(26 26 26 / 15%);
-}
-#button {
-    border-radius: 0.25rem 1.25rem 0.25rem 0.25rem;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, .5);
+    outline-offset: 0px;
+    text-shadow: none;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 .button:hover {
-    transform: translate(-1.5px);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #427388; 
+}
+#button3 {
+    border-radius: 0.25rem 1.25rem 0.25rem 0.25rem;
 }
 #card-bottom {
     display: flex;
@@ -112,13 +114,15 @@ body {
     margin-right: 10px;
 }
 .icon {
-    height: 50px;
+    height: 33px;
     margin: 0.25rem;
-    transition: transform .2s ease-in-out;
+    transition: transform .2s ease-out;
     transform: scale(1.01);
+    opacity: 0.5;
 }
 .icon:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
+    opacity: 1;
 }
 @keyframes fadeInAnimation {
     0% {
