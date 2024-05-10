@@ -12,13 +12,31 @@
 <body class = "dark-theme">
     <div id="page">
         <video id="video" autoplay loop muted>
-            <source src="./media/2.mp4" type="video/mp4">
+            <source src="./media/1.mp4" type="video/mp4">
         </video>
         <div id="card">
             <div id="card-top">
                 <div id="title">
                     <p id="greeting"></p>
-                    <button onclick="toggleMode()"> Try it </button>
+                </div>
+                <div id="button-grid">
+                    <a target=”_blank” href="https://watch.coen.ovh">
+                        <div class="button">Watch</div>
+                    </a>
+                    <a target=”_blank” href="https://drive.coen.ovh">
+                        <div class="button">Drive</div>
+                    </a>
+                    <a target=”_blank” href="https://status.coen.ovh">
+                        <div id="button"class="button">Status</div>
+                    </a>
+                </div>
+            </div>
+            <div id="card-bottom">
+                <div id="message">
+                    <p>looks nicer now right</p>
+                </div>
+                <div id="icon">
+                    <p>icon</p>
                 </div>
             </div>
         </div>
