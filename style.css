@@ -29,7 +29,7 @@ body {
     margin-left: 20px;
 }
 .dark-theme {
-    ---background: linear-gradient(to bottom right, rgb(68, 59, 40, 0.8) , rgb(68, 45, 45, 0.8));;
+    ---background: linear-gradient(to bottom right, rgb(33, 37, 36) , rgb(21, 43, 34));;
     ---text: #d4d4d4;
     ---card: rgba(20, 20, 20, 0.5);
 }.light-theme {
@@ -37,3 +37,11 @@ body {
     ---text: #292929;
     ---card: rgba(255, 255, 255, 0.5);
 }
+#video {
+    position: fixed;
+    width: 90%;
+    height: 90%;
+    border-radius: 20px;
+    z-index: -1;
+    object-fit: cover;
+  }  

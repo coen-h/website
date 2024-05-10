@@ -8,17 +8,17 @@ const greetingElement = document.getElementById("greeting");
         if(hours >= 6 && hours <= 11){
             greeting ='Good Morning!';
         }
-        else if(hours >= 12 && hours <= 5){
+        else if(hours >= 12 && hours <= 17){
             greeting = 'Good Afternoon!';
         }
-        else if(hours >= 6 && hours <= 9){
+        else if(hours >= 18 && hours <= 21){
             greeting = 'Good Evening!';
         }
-        else if(hours >= 10 && hours <= 5){
+        else if(hours >= 22 && hours <= 5){
             greeting = 'Good Night!';
         }
         else{
-            greeting = 'time broke!!!'
+            greeting = 'Hello!'
         }
 
     greetingElement.textContent = greeting;
@@ -28,9 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
     updateTimeGreeting();
   });  
 
-function toggleMode() {
-    document.page.classList.toggle("light-theme");
-}
 const currentTheme = localStorage.getItem("theme");if (currentTheme == "light") {
     document.body.classList.add("light-theme");
     }function toggleMode() {
