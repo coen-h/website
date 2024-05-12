@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coen</title>
     <link rel="stylesheet" href="style.css">
+    <script src="//unpkg.com/topojson-client"></script>
+    <script src="//unpkg.com/globe.gl"></script>
     <link rel="icon" type="image/x-icon" href="./media/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +21,7 @@
             <div id="card-top">
                 <div id="title">
                     <p id="greeting"></p>
-                    <noscript><p>Hey there!</p></noscript>
+                    <noscript><p>please enable javascript</p></noscript>
                 </div>
                 <div id="button-grid">
                     <a id="grid" target=”_blank” href="https://watch.coen.ovh" rel=noopener noreferrer>
@@ -31,6 +33,12 @@
                     <a id="grid" target=”_blank” href="https://status.coen.ovh" rel=noopener noreferrer>
                         <div id="button3" class="button">Status</div>
                     </a>
+                </div>
+            </div>
+            <div id="card-middle">
+                <div id="side">
+                    <div id="user"></div>
+                    <div id="github"></div>
                 </div>
             </div>
             <div id="card-bottom">
@@ -48,10 +56,9 @@
                         <img class="icon" src="./media/discord.jpg">
                     </a>
                 </div>
-                
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
