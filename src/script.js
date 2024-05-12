@@ -67,7 +67,7 @@ const world = Globe()
     .pointOfView({ lat: -40.9006, lng: 174.8860, altitude: 0 })
     .showGlobe(false)
     .showAtmosphere(false)
-    .height(380);
+    .height(370);
 
 world(globeVizDiv);
 
