@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
                   <p>${repo.description || 'No description provided'}</p>
               </div>
               <div class="repo-meta">
-                  <p>${repo.stargazers_count} <img id="star-icon" src="./media/star.png"></p>
+                  <p>${repo.stargazers_count} <img id="star-icon" src="./assets/star.png"></p>
                   <p>${repo.open_issues} Issues</p>
               </div>
               </a>
@@ -94,7 +94,7 @@ world.htmlElementsData([
     return el;
 });
 
-fetch('./media/land-110m.json').then(res => res.json())
+fetch('./assets/land-110m.json').then(res => res.json())
 .then(landTopo => {
     world
     .polygonsData(topojson.feature(landTopo, landTopo.objects.land).features)
