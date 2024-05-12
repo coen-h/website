@@ -132,7 +132,7 @@ body {
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    animation: sideAnimation ease-in-out 1.5s;
+    animation: sideAnimation ease-in-out 2s;
 }
 #github {
     display: flex;
@@ -153,6 +153,7 @@ body {
     width: 400px;
     height: 150px;
     border-radius: 10px;
+    animation: sideAnimation ease-in-out 2.5s;
 }
 #github-box {
     display: flex;
