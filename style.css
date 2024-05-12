@@ -128,10 +128,10 @@ body {
 #side {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
 }
 #github {
     display: flex;
@@ -141,7 +141,6 @@ body {
     margin-left: 1rem;
     margin-right: 1rem;
     width: 400px;
-    flex-grow: 1;
 }
 #github-box {
     display: flex;
@@ -184,8 +183,8 @@ body {
     outline-color: rgba(255, 255, 255, .3);
     margin-left: 1rem;
     overflow: hidden;
-    width: 400px;
     padding: 1rem;
+    width: 420px;
 }
 #user-name {
     font-size: 2rem;
@@ -196,7 +195,7 @@ body {
     font-weight: bold;
 }
 #user-quote {
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-align: center;
     font-style: italic;
     margin-bottom: 5px;
@@ -204,6 +203,92 @@ body {
 #globeViz {
     transform-origin: center center;
     transform: scale(1.4);
+}
+.repo-info {
+    font-size: 1.3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.repo-meta {
+    display: flex;
+    justify-content: space-between;
+}
+#star-icon {
+    width: 10px;
+}
+#device-small {
+    display: none;
+}
+@media (max-height: 800px) {
+    #globeViz {
+        display: none;
+    }
+}
+@media (max-width: 970px) {
+    #globeViz {
+        display: none;
+    }
+    #user {
+        margin: 0;
+    }
+}
+@media (max-width: 720px) {
+    * {
+        font-size: 0.90em;
+    }
+    #star-icon {
+        width: 7px;
+    }
+}
+@media (max-width: 535px) {
+    #github {
+        width: 350px;
+    }
+    #user {
+        width: 370px;
+    }
+    .button {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 502px) {
+    * {
+        font-size: 0.9rem;
+    }
+    #title {
+        display: none;
+    }
+    #user {
+        width: 272px;
+    }
+    #github {
+        width: 300px;
+    }
+    #github-box {
+        width: 108px;
+    }
+    #button-grid {
+        justify-content: space-evenly;
+    }
+    .button {
+        width: 118px;
+    }
+}
+@media (max-width: 358px) {
+    #page {
+        display: none;
+    }
+    #device-small {
+        display: block;
+    }
+}
+@media (max-height: 400px) {
+    #page {
+        display: none;
+    }
+    #device-small {
+        display: block;
+    }
 }
 @keyframes fadeInAnimation {
     0% {

@@ -41,12 +41,16 @@ document.addEventListener("DOMContentLoaded", function() {
               const repoItem = document.createElement('div');
               repoItem.classList.add('repo-item');
               repoItem.innerHTML = `
-                  <a id="github-box" href="${repo.html_url}" target="_blank">
-                    <p>${repo.name}</p>
-                    <p>${repo.description || 'No description provided'}</p>
-                    <p>${repo.stargazers_count} <img src="./media/star.png" style="width: 12px"></p>
-                    <p>Issues: ${repo.open_issues}</p>
-                  </a>
+              <a id="github-box" href="${repo.html_url}" target="_blank">
+              <div class="repo-info">
+                  <p style="font-weight: bold">${repo.name}</p>
+                  <p>${repo.description || 'No description provided'}</p>
+              </div>
+              <div class="repo-meta">
+                  <p>${repo.stargazers_count} <img id="star-icon" src="./media/star.png"></p>
+                  <p>${repo.open_issues} Issues</p>
+              </div>
+              </a>
               `;
               githubDiv.appendChild(repoItem);
           });
@@ -61,7 +65,7 @@ fetch(`https://api.github.com/users/coen-h`)
     const userInfoDiv = document.getElementById('user');
     
     const userHtml = `
-        <div><p id="user-name">${data.name || 'Rate Limited'}</p></div>
+        <div><p id="user-name">Hi, My names ${data.name || 'Rate Limited'}.</p></div>
         <div id="globeViz"></div>
         <div><p id="user-bio">${data.bio || 'Rate Limited'}</p></div>
         <div id="user-quote"><p>"Worry never robs tomorrow of its sorrow, it only saps today of its joy."</p></div>
@@ -70,13 +74,13 @@ fetch(`https://api.github.com/users/coen-h`)
     userInfoDiv.innerHTML = userHtml;
 
     const globeVizDiv = document.getElementById('globeViz');
+
     const world = Globe()
         .backgroundColor('rgba(0,0,0,0)')
         .pointOfView({ lat: -40.9006, lng: 174.8860, altitude: 0 })
         .showGlobe(false)
         .showAtmosphere(false)
-        .width(250)
-        .height(250)
+        .height(430);
 
     world(globeVizDiv);
 
@@ -95,7 +99,7 @@ fetch(`https://api.github.com/users/coen-h`)
       const el = document.createElement('div');
       el.innerHTML = markerSvg;
       el.style.color = 'red';
-      el.style.width = '10px';
+      el.style.width = '5px';
 
       el.style['pointer-events'] = 'auto';
       el.style.cursor = 'pointer';
