@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });  
 
   const username = 'coen-h';
-  const githubDiv = document.getElementById('github');
+  const githubDiv = document.getElementById('github-content');
 
   fetch(`https://api.github.com/users/${username}/repos`)
       .then(response => response.json())
@@ -67,7 +67,7 @@ const world = Globe()
     .pointOfView({ lat: -40.9006, lng: 174.8860, altitude: 0 })
     .showGlobe(false)
     .showAtmosphere(false)
-    .height(430);
+    .height(380);
 
 world(globeVizDiv);
 
@@ -100,4 +100,16 @@ fetch('./assets/land-110m.json').then(res => res.json())
     .polygonsData(topojson.feature(landTopo, landTopo.objects.land).features)
     .polygonCapMaterial(new THREE.MeshLambertMaterial({ color: 'darkslategrey', side: THREE.DoubleSide }))
     .polygonSideColor(() => 'rgba(0,0,0,0)');
+});
+fetch(
+    "https://api.github.com/repos/coen-h/spotify/contents/player.min.html"
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var iframe = document.getElementById("github-iframe");
+      iframe.src =
+        "data:text/html;charset=utf-8;base64," +
+        encodeURIComponent(data["content"]);
 });
