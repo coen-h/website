@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", function() {
   fetch(`https://api.github.com/users/${username}/repos`)
       .then(response => response.json())
       .then(data => {
+        data.reverse();
+        
           data.forEach(repo => {
               const repoItem = document.createElement('div');
               repoItem.classList.add('repo-item');
