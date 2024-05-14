@@ -271,7 +271,83 @@ body {
         display: none;
     }
 }
+@media (max-width: 720px) {
+    #title {
+        display: none;
+    }
+    #card-top {
+        justify-content: space-evenly;
+    }
+    #button3 {
+        border-radius: 0.25rem;
+    }
+    .button {
+        width: 100px;
+    }
+}
+
 @media (max-width: 560px) {
+    #github-card {
+        width: 370px;
+    }
+    #github-content {
+        width: 350px;
+    }
+    #user {
+        width: 340px;
+    }
+    #user-name {
+        font-size: 1.75rem;
+    }
+    .button {
+        width: 80px;
+    }
+    #card {
+        height: 97%;
+    }
+}
+@media (max-width: 470px) {
+    #github-card {
+        width: 330px;
+    }
+    #github-content {
+        width: 310px;
+    }
+    #user {
+        width: 300px;
+    }
+}
+@media (max-width: 430px) {
+    .button {
+        width: auto;
+    }
+}
+@media (max-width: 380px) {
+    .icon {
+        height: 25px;
+    }
+    #github-card {
+        width: 280px;
+    }
+    #github-content {
+        width: 260px;
+    }
+    #user {
+        width: 250px;
+    }
+    .button {
+        font-size: 1rem;
+    }
+    #user-name {
+        font-size: 1.45rem;
+    }
+}
+@media (max-width: 340px) {
+    #message {
+        font-size: 0.9rem;
+    }
+}
+@media (max-width: 330px) {
     #page {
         display: none;
     }
@@ -279,14 +355,7 @@ body {
         display: block;
     }
 }
-@media (max-height: 550px) {
-    #page {
-        display: none;
-    }
-    #device-small {
-        display: block;
-    }
-}
+
 @keyframes fadeInAnimation {
     0% {
         opacity: 0;
