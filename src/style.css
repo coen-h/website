@@ -150,6 +150,7 @@ body {
     outline: 1px solid;
     outline-color: rgba(255, 255, 255, .5);
     border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 #github-content {
     display: grid;
@@ -162,7 +163,7 @@ body {
 }
 #github-iframe {
     width: 420px;
-    height: 150px;
+    height: 151px;
     border-radius: 10px;
     animation: sideAnimation ease-in-out 2.5s;
 }
