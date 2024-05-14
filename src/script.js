@@ -35,7 +35,7 @@ function updateTimeStatus() {
     let statusText;
     let statusClass;
 
-    if (hours >= 20 || hours <= 7) {
+    if (hours >= 22 || hours <= 7) {
         statusText = 'Offline';
         statusClass = 'offline';
     } else {
