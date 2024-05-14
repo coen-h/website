@@ -26,9 +26,36 @@ const greetingElement = document.getElementById("greeting");
     greetingElement.textContent = greeting;
     setInterval(updateTimeGreeting, 60000);
 }
+const statusElement = document.getElementById("status");
+
+function updateTimeStatus() {
+    const date = new Date();
+    const hours = date.getHours();
+
+    let statusText;
+    let statusClass;
+
+    if (hours >= 20 || hours <= 7) {
+        statusText = 'Offline';
+        statusClass = 'offline';
+    } else {
+        statusText = 'Online';
+        statusClass = 'online';
+    }
+
+    const statusDot = document.querySelector('.status-dot');
+    statusDot.textContent = ' ●';
+    statusElement.className = statusClass;
+
+    const statusTextElement = document.querySelector('.status-text');
+    statusTextElement.textContent = statusText;
+}
+
+setInterval(updateTimeStatus, 60000);
 
 document.addEventListener("DOMContentLoaded", function() {
     updateTimeGreeting();
+    updateTimeStatus()
   });  
 
   const username = 'coen-h';
