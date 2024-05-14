@@ -252,6 +252,16 @@ body {
     background-color: rgb(46, 46, 46);
     text-align: center;
 }
+@media (min-width: 1000px) {
+    @media (max-height: 530px) {
+        #page {
+            display: none;
+        }
+        #device-small {
+            display: block;
+        }
+    }
+}
 @media (max-height: 700px) {
     #globeViz {
         display: none;
@@ -269,6 +279,11 @@ body {
     }
     #github-iframe {
         display: none;
+    }
+    @media (max-height: 680px) {
+        #github-card {
+            display: none;
+        }
     }
 }
 @media (max-width: 720px) {
