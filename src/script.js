@@ -26,36 +26,9 @@ const greetingElement = document.getElementById("greeting");
     greetingElement.textContent = greeting;
     setInterval(updateTimeGreeting, 60000);
 }
-const statusElement = document.getElementById("status");
-
-function updateTimeStatus() {
-    const date = new Date();
-    const hours = date.getHours();
-
-    let statusText;
-    let statusClass;
-
-    if (hours >= 22 || hours <= 7) {
-        statusText = 'Offline';
-        statusClass = 'offline';
-    } else {
-        statusText = 'Online';
-        statusClass = 'online';
-    }
-
-    const statusDot = document.querySelector('.status-dot');
-    statusDot.textContent = ' ●';
-    statusElement.className = statusClass;
-
-    const statusTextElement = document.querySelector('.status-text');
-    statusTextElement.textContent = statusText;
-}
-
-setInterval(updateTimeStatus, 60000);
 
 document.addEventListener("DOMContentLoaded", function() {
     updateTimeGreeting();
-    updateTimeStatus()
   });  
 
   const username = 'coen-h';
@@ -142,41 +115,22 @@ fetch(
         "data:text/html;charset=utf-8;base64," +
         encodeURIComponent(data["content"]);
 });
-let weather = {
-    apiKey: "314701bcbbf912956449b9beb980d4a5",
-    fetchWeather: function (city) {
-      fetch(
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-          city +
-          "&units=metric&appid=" +
-          this.apiKey
-      )
-        .then((response) => {
-          if (!response.ok) {
-            alert("No weather found.");
-            throw new Error("No weather found.");
-          }
-          return response.json();
-        })
-        .then((data) => this.displayWeather(data));
-    },
-    displayWeather: function (data) {
-    const { name } = data;
-    const { icon, description } = data.weather[0];
-    const temp = data.main.temp.toFixed(1);
-    const { humidity } = data.main;
-    const { speed } = data.wind;
-      document.querySelector(".city").innerText = "Weather in " + name;
-      document.querySelector(".icon").src =
-        "https://openweathermap.org/img/wn/" + icon + ".png";
-      document.querySelector(".description").innerText = description;
-      document.querySelector(".temp").innerText = temp + "°C";
-      document.querySelector(".humidity").innerText =
-        "Humidity: " + humidity + "%";
-      document.querySelector(".wind").innerText =
-        "Wind speed: " + speed + " km/h";
-      document.querySelector(".weather").classList.remove("loading");
-    },
-  };
-  
-  weather.fetchWeather("Auckland");  
+const data = [20, 25, 30, 40, 50, 60, 70, 75, 70, 60, 50, 40, 35, 30, 25, 20, 15, 10, 5, 5, 10, 15, 20, 25];
+
+    const chart = document.getElementById('time-graph');
+
+    for (let i = 0; i < 24; i++) {
+        const barContainer = document.createElement('div');
+        barContainer.classList.add('bar-container');
+        chart.appendChild(barContainer);
+
+        const bar = document.createElement('div');
+        bar.classList.add('bar');
+        bar.style.height = `${data[i]}px`;
+        barContainer.appendChild(bar);
+
+        const hourLabel = document.createElement('div');
+        hourLabel.classList.add('hour-label');
+        hourLabel.textContent = `${i}:00`;
+        barContainer.appendChild(hourLabel);
+    }
