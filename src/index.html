@@ -6,7 +6,8 @@
     <title>Coen</title>
     <link rel="stylesheet" href="style.css">
     <script src="//unpkg.com/topojson-client"></script>
-    <script src="//unpkg.com/globe.gl"></script>
+    <script src="//unpkg.com/globe.gl"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,10 +60,22 @@
                             <div id="github-content"></div>
                         </div>
                     </div>
-                    <div id="time-card">
-                        <div id="time-title"><p>Time</p></div>
-                        <div id="time-graph"></div>
+                    <div id="projects">
+                        <div id="project-title">Projects</div>
+                        <div id="zmov" class="project">
+                            <div id="project-image"><img src="./assets/zmov.png" style="width: 100px"></div>
+                            <div id="project-desc"><p>A website where you can watch every movie for free, this is 100% legal as we don't host the files.</p></div>
+                        </div>
+                        <div id="trademe" class="project">
+                            <div id="project-image"><img src="./assets/trademe.png" style="width: 100px"></div>
+                            <div id="project-desc"><p>This is a clone of New Zealands largest auction site. It will have a working backend with listings and working auctions.</p></div>
+                        </div>
+                        <div id="website" class="project">
+                            <div id="project-image"><img src="./assets/favicon.png" style="width: 50px"></div>
+                            <div id="project-desc"><p>Currently spending most my time on improving this site you are on right now.</p></div>
+                        </div>
                     </div>
+                    <!-- <div id="material for filling space"></div>  -->
                 </div>
             </div>
             <div id="card-bottom">

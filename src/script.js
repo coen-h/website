@@ -115,22 +115,3 @@ fetch(
         "data:text/html;charset=utf-8;base64," +
         encodeURIComponent(data["content"]);
 });
-const data = [20, 25, 30, 40, 50, 60, 70, 75, 70, 60, 50, 40, 35, 30, 25, 20, 15, 10, 5, 5, 10, 15, 20, 25];
-
-    const chart = document.getElementById('time-graph');
-
-    for (let i = 0; i < 24; i++) {
-        const barContainer = document.createElement('div');
-        barContainer.classList.add('bar-container');
-        chart.appendChild(barContainer);
-
-        const bar = document.createElement('div');
-        bar.classList.add('bar');
-        bar.style.height = `${data[i]}px`;
-        barContainer.appendChild(bar);
-
-        const hourLabel = document.createElement('div');
-        hourLabel.classList.add('hour-label');
-        hourLabel.textContent = `${i}:00`;
-        barContainer.appendChild(hourLabel);
-    }

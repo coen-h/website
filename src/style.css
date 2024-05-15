@@ -80,7 +80,7 @@ body {
     box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
     outline-color: rgba(255, 255, 255, 0);
     outline-offset: 15px;
-    text-shadow: 1px 1px 2px #427388; 
+    text-shadow: 1px 1px 2px #7f8c92;  
 }
 #button3 {
     border-radius: 0.25rem 1.25rem 0.25rem 0.25rem;
@@ -180,7 +180,7 @@ body {
     box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
     outline-color: rgba(255, 255, 255, 0);
     outline-offset: 15px;
-    text-shadow: 1px 1px 2px #66828e; 
+    text-shadow: 1px 1px 2px #7f8c92; 
 }
 .repo-item {
     font-size: 1rem;
@@ -245,49 +245,61 @@ body {
     background-color: rgb(46, 46, 46);
     text-align: center;
 }
-#time-card {
-    display: none;
-    /* display: flex;  */
+#projects {
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 420px;
+    height: 491px;
+    font-size: 1rem;
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, .5);
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
     align-items: center;
-    width: 400px;
-    height: 400px;
 }
-#time-graph {
-    display: flex;
-    align-items: flex-end;
-    width: 500px;
-    height: 300px;
-    border: 1px solid #ccc;
-}
-
-.bar-container {
-    position: relative;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-.bar {
-    width: 15px;
-    background-color: rgba(255,255,255, 0.2);
-    border-radius: 0.5rem 0.5rem 0rem 0rem;
-}
-
-.hour-label {
+#project-title {
+    width: 360px;
+    height: 40px;
     text-align: center;
-    margin-top: 5px;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: none;
 }
-
-.bar-container:hover .hour-label {
-    display: block;
+#project-desc {
+    display: flex;
+    width: 300px;
+    height: 100px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.project {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 15px;
+    width: 380px;
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, 1);
+    padding: 10px;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+#trademe {
+    display: flex;
+    flex-direction: row-reverse;
+}
+#project-image {
+    margin: 10px;
+    margin-bottom: 5px;
+}
+#project-title {
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-top: 5px;
+}
+@media (max-width: 1440px) {
+    #projects {
+        display: none;
+    }
 }
 @media (min-width: 1000px) {
     @media (max-height: 530px) {
@@ -301,6 +313,9 @@ body {
 }
 @media (max-height: 700px) {
     #globeViz {
+        display: none;
+    }
+    #projects {
         display: none;
     }
     #github-iframe {
