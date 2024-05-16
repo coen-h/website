@@ -121,19 +121,25 @@ let cardTop = document.getElementById('card-top');
 let cardMiddle = document.getElementById('card-middle');
 let cardBottom = document.getElementById('card-bottom');
 
+let lastScrollTop = 0;
+
 document.addEventListener('wheel', function(event) {
   let deltaY = event.deltaY;
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
   if (event.target === card || event.target === cardTop || event.target === cardBottom || event.target === cardMiddle || event.target === page) {
     if (deltaY > 0) {
-      card.classList.add('expanded');
-      card.style.width = "100%";
-      card.style.height = "100%";
-      card.style.border = "0px";
-      card.style.borderRadius = "0rem";
-      cardTop.style.opacity = "0";
-      cardMiddle.style.opacity = "0";
-      cardBottom.style.opacity = "0";
+      if (!card.classList.contains('expanded')) {
+        card.classList.add('expanded');
+        card.style.width = "100%";
+        card.style.height = "100%";
+        card.style.border = "0px";
+        card.style.borderRadius = "0rem";
+        cardTop.style.opacity = "0";
+        cardMiddle.style.opacity = "0";
+        cardBottom.style.opacity = "0";
+        card.addEventListener('transitionend', hideCards, { once: true });
+      }
     } else {
       card.classList.remove('expanded');
       card.style.width = "94.5%";
@@ -143,6 +149,16 @@ document.addEventListener('wheel', function(event) {
       cardTop.style.opacity = "1";
       cardMiddle.style.opacity = "1";
       cardBottom.style.opacity = "1";
+      cardTop.style.display = "flex";
+      cardMiddle.style.display = "flex";
+      cardBottom.style.display = "flex";
     }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   }
 });
+
+function hideCards() {
+  cardTop.style.display = "none";
+  cardMiddle.style.display = "none";
+  cardBottom.style.display = "none";
+}
