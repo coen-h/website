@@ -120,12 +120,11 @@ let page = document.getElementById('page');
 let cardTop = document.getElementById('card-top');
 let cardMiddle = document.getElementById('card-middle');
 let cardBottom = document.getElementById('card-bottom');
-
-let lastScrollTop = 0;
+let page2 = document.getElementById('page2');
 
 document.addEventListener('wheel', function(event) {
   let deltaY = event.deltaY;
-  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  let scrollTop = window.scrollY || document.documentElement.scrollTop;
 
   if (event.target === card || event.target === cardTop || event.target === cardBottom || event.target === cardMiddle || event.target === page) {
     if (deltaY > 0) {
@@ -141,19 +140,21 @@ document.addEventListener('wheel', function(event) {
         card.addEventListener('transitionend', hideCards, { once: true });
       }
     } else {
-      card.classList.remove('expanded');
-      card.style.width = "94.5%";
-      card.style.height = "90%";
-      card.style.border = "1px solid rgba(255,255,255,0.3)";
-      card.style.borderRadius = "1.25rem";
-      cardTop.style.opacity = "1";
-      cardMiddle.style.opacity = "1";
-      cardBottom.style.opacity = "1";
-      cardTop.style.display = "flex";
-      cardMiddle.style.display = "flex";
-      cardBottom.style.display = "flex";
+      if (scrollTop <= page.offsetTop) {
+        card.classList.remove('expanded');
+        card.style.width = "94.5%";
+        card.style.height = "90%";
+        card.style.border = "1px solid rgba(255,255,255,0.3)";
+        card.style.borderRadius = "1.25rem";
+        cardTop.style.opacity = "1";
+        cardMiddle.style.opacity = "1";
+        cardBottom.style.opacity = "1";
+        cardTop.style.display = "flex";
+        cardMiddle.style.display = "flex";
+        cardBottom.style.display = "flex";
+        page2.style.display = "none";
+      }
     }
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   }
 });
 
@@ -161,4 +162,5 @@ function hideCards() {
   cardTop.style.display = "none";
   cardMiddle.style.display = "none";
   cardBottom.style.display = "none";
+  page2.style.display = "flex";
 }

@@ -25,9 +25,11 @@
         <p>Your screen is too small, try flip your screen.</p>
     </div>
     <div id="page">
-        <video id="video" autoplay loop muted>
-            <source src="./assets/1.mp4" type="video/mp4">
-        </video>
+        <div id="video-container">
+            <video id="video" autoplay loop muted>
+                <source src="./assets/1.mp4" type="video/mp4">
+            </video>
+        </div>
         <div id="card">
             <div id="card-top">
                 <div id="title">
@@ -60,7 +62,7 @@
                         </div>
                     </div>
                     <div id="projects">
-                        <div id="project-title">Projects</div>
+                        <div id="project-title"><p>Projects</p></div>
                         <div id="zmov" class="project">
                             <div id="project-image"><img src="./assets/zmov.png" style="width: 100px"></div>
                             <div id="project-desc"><p>A website where you can watch every movie for free, this is 100% legal as we don't host the files.</p></div>
@@ -92,6 +94,7 @@
             </div>
         </div>
     </div>
+    <div id="page2"></div>
     <script type="module" src="script.js"></script>
 </body>
 </html>
