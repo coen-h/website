@@ -116,6 +116,7 @@ fetch(
         encodeURIComponent(data["content"]);
 });
 let card = document.getElementById('card');
+let page = document.getElementById('page');
 let cardTop = document.getElementById('card-top');
 let cardMiddle = document.getElementById('card-middle');
 let cardBottom = document.getElementById('card-bottom');
@@ -123,23 +124,25 @@ let cardBottom = document.getElementById('card-bottom');
 document.addEventListener('wheel', function(event) {
   let deltaY = event.deltaY;
 
-  if (deltaY > 0) {
-    card.classList.add('expanded');
-    card.style.width = "100%";
-    card.style.height = "100%";
-    card.style.border = "0px";
-    card.style.borderRadius = "0rem";
-    cardTop.style.opacity = "0";
-    cardMiddle.style.opacity = "0";
-    cardBottom.style.opacity = "0";
-  } else {
-    card.classList.remove('expanded');
-    card.style.width = "94.5%";
-    card.style.height = "90%";
-    card.style.border = "1px solid rgba(255,255,255,0.3)";
-    card.style.borderRadius = "1.25rem";
-    cardTop.style.opacity = "1";
-    cardMiddle.style.opacity = "1";
-    cardBottom.style.opacity = "1";
+  if (event.target === card || event.target === cardTop || event.target === cardBottom || event.target === cardMiddle || event.target === page) {
+    if (deltaY > 0) {
+      card.classList.add('expanded');
+      card.style.width = "100%";
+      card.style.height = "100%";
+      card.style.border = "0px";
+      card.style.borderRadius = "0rem";
+      cardTop.style.opacity = "0";
+      cardMiddle.style.opacity = "0";
+      cardBottom.style.opacity = "0";
+    } else {
+      card.classList.remove('expanded');
+      card.style.width = "94.5%";
+      card.style.height = "90%";
+      card.style.border = "1px solid rgba(255,255,255,0.3)";
+      card.style.borderRadius = "1.25rem";
+      cardTop.style.opacity = "1";
+      cardMiddle.style.opacity = "1";
+      cardBottom.style.opacity = "1";
+    }
   }
 });
