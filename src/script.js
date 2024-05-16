@@ -117,26 +117,30 @@ fetch(
 });
 let card = document.getElementById('card');
 let page = document.getElementById('page');
+let videoContainer = document.getElementById('video-container');
 let cardTop = document.getElementById('card-top');
 let cardMiddle = document.getElementById('card-middle');
 let cardBottom = document.getElementById('card-bottom');
-let page2 = document.getElementById('page2');
+let expanded = document.getElementById('expanded');
 
 document.addEventListener('wheel', function(event) {
   let deltaY = event.deltaY;
   let scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-  if (event.target === card || event.target === cardTop || event.target === cardBottom || event.target === cardMiddle || event.target === page) {
+  if (event.target === card || event.target === cardTop || event.target === cardBottom || event.target === cardMiddle || event.target === page || event.target === expanded) {
     if (deltaY > 0) {
       if (!card.classList.contains('expanded')) {
         card.classList.add('expanded');
         card.style.width = "100%";
         card.style.height = "100%";
+        videoContainer.style.width = "100%"
+        videoContainer.style.height = "100%"
         card.style.border = "0px";
         card.style.borderRadius = "0rem";
         cardTop.style.opacity = "0";
         cardMiddle.style.opacity = "0";
         cardBottom.style.opacity = "0";
+        expanded.style.display = "flex";
         card.addEventListener('transitionend', hideCards, { once: true });
       }
     } else {
@@ -144,6 +148,8 @@ document.addEventListener('wheel', function(event) {
         card.classList.remove('expanded');
         card.style.width = "94.5%";
         card.style.height = "90%";
+        videoContainer.style.width = "94.5%"
+        videoContainer.style.height = "90%"
         card.style.border = "1px solid rgba(255,255,255,0.3)";
         card.style.borderRadius = "1.25rem";
         cardTop.style.opacity = "1";
@@ -152,7 +158,7 @@ document.addEventListener('wheel', function(event) {
         cardTop.style.display = "flex";
         cardMiddle.style.display = "flex";
         cardBottom.style.display = "flex";
-        page2.style.display = "none";
+        expanded.style.display = "none";
       }
     }
   }
@@ -162,5 +168,4 @@ function hideCards() {
   cardTop.style.display = "none";
   cardMiddle.style.display = "none";
   cardBottom.style.display = "none";
-  page2.style.display = "flex";
 }

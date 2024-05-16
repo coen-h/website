@@ -26,7 +26,7 @@ body {
     justify-content: space-between;
     width: 94.5%;
     height: 90%;
-    background-color: rgba(20, 20, 20, 0.5);;
+    background-color: rgba(20, 20, 20, 0.5);
     border-radius: 1.25rem;
     backdrop-filter: blur(40px);
     box-shadow: 10px 10px 12px rgba(0,0,0,0.25);
@@ -55,6 +55,7 @@ body {
     height: 90%;
     overflow: hidden;
     border-radius: 1.25rem;
+    transition: width 0.5s, height 0.5s;
 }
 #video {
     width: 100%;
@@ -96,6 +97,7 @@ body {
     align-items: flex-end;
     animation: sideAnimation ease-in-out 1s;
     transition: opacity 0.3s ease;
+    
 }
 #message {
     font-size: 1rem;
@@ -123,6 +125,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     transition: opacity 0.3s ease;
+    
 }
 #side {
     display: flex;
@@ -298,10 +301,16 @@ body {
     font-weight: bolder;
     margin-top: 5px;
 }
-#page2 {
+#expanded {
     display: none;
-    height: 1000px;
-    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#expand-message {
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
 }
 @media (max-width: 1440px) {
     #projects {
