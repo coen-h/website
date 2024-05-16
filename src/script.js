@@ -140,8 +140,7 @@ document.addEventListener('wheel', function(event) {
         cardTop.style.opacity = "0";
         cardMiddle.style.opacity = "0";
         cardBottom.style.opacity = "0";
-        expanded.style.display = "flex";
-        card.addEventListener('transitionend', hideCards, { once: true });
+        card.addEventListener('transitionend', expandAnimation, { once: true });
       }
     } else {
       if (scrollTop <= page.offsetTop) {
@@ -164,8 +163,9 @@ document.addEventListener('wheel', function(event) {
   }
 });
 
-function hideCards() {
+function expandAnimation() {
   cardTop.style.display = "none";
   cardMiddle.style.display = "none";
   cardBottom.style.display = "none";
+  expanded.style.display = "flex";
 }
