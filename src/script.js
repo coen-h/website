@@ -125,7 +125,7 @@ let expanded = document.getElementById('expanded');
 let shrink = document.getElementById('shrink');
 let projects = document.getElementById('projects');
 let isAnimating = false;
-const animationDelay = 1500;
+const animationDelay = 1000;
 
 document.addEventListener('wheel', function(event) {
   if (isAnimating) return;
@@ -177,10 +177,10 @@ function startAnimation(state, callback) {
     expanded.style.opacity = "0";
     shrink.style.opacity = "1";
   } else {
-    card.style.width = "94.5%";
-    card.style.height = "90%";
-    videoContainer.style.width = "94.5%";
-    videoContainer.style.height = "90%";
+    card.style.width = "90%";
+    card.style.height = "85.5%";
+    videoContainer.style.width = "90%";
+    videoContainer.style.height = "85.5%";
     card.style.border = "1px solid rgba(255,255,255,0.3)";
     card.style.borderRadius = "1.25rem";
     cardTop.style.opacity = "1";

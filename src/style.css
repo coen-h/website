@@ -17,15 +17,15 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-image: linear-gradient(to bottom right, rgba(28, 37, 35, 0.9) , rgba(24, 39, 33, 0.9));
+    background-image: linear-gradient(to bottom right, rgba(20, 22, 20, 0.9) , rgba(19, 22, 24, 0.9));
 }
 
 /* video card  */
 
 #video-container {
     position: absolute;
-    width: 94.5%;
-    height: 90%;
+    width: 90%;
+    height: 85.5%;
     overflow: hidden;
     border-radius: 1.25rem;
     transition: width 1s, height 1s;
@@ -39,8 +39,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 94.5%;
-    height: 90%;
+    width: 90%;
+    height: 85.5%;
     background-color: rgba(20, 20, 20, 0.5);
     border-radius: 1.25rem;
     backdrop-filter: blur(40px);
@@ -270,7 +270,7 @@ body {
 }
 #projects {
     display: flex;
-    margin: 20rem;
+    margin: 25rem;
     font-size: 1.5rem;
     height: 100vh;
     flex-direction: column;
@@ -281,11 +281,17 @@ body {
     justify-content: center;
     font-size: 3rem;
     font-weight: bold;
+    margin-top: 2rem;
 }
 .project {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255,255,255,.1);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
 }
 #project-image {
     margin: 10px;
@@ -299,6 +305,9 @@ body {
     justify-content: center;
     text-align: center;
 }
+#project-small {
+    margin: 10px;
+}
 
 /* shrink page */
 
@@ -307,7 +316,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 70vh;
-    transition: opacity 0.3s ease;
+    transition: opacity 1s ease;
 }
 #contact-title {
     text-align: center;
@@ -401,6 +410,7 @@ body {
     }
     #card {
         height: 97%;
+        width: 94.5%
     }
 }
 @media (max-width: 470px) {
