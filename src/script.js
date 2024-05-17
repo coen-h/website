@@ -123,15 +123,16 @@ let cardMiddle = document.getElementById('card-middle');
 let cardBottom = document.getElementById('card-bottom');
 let expanded = document.getElementById('expanded');
 let shrink = document.getElementById('shrink');
+let projects = document.getElementById('projects');
 let isAnimating = false;
-const animationDelay = 500;
+const animationDelay = 1500;
 
 document.addEventListener('wheel', function(event) {
   if (isAnimating) return;
 
   let deltaY = event.deltaY || -event.wheelDelta;
 
-  if (event.target === card || event.target === cardTop || event.target === cardBottom || event.target === cardMiddle || event.target === page || event.target === expanded || event.target === shrink) {
+  if (event.target === card || event.target === cardTop || event.target === cardBottom || event.target === cardMiddle || event.target === page || event.target === expanded || event.target === shrink || event.target === projects) {
     if (deltaY > 0) {
       if (card.classList.contains('shrink')) {
         startAnimation('default', normalAnimation);
@@ -163,6 +164,8 @@ function startAnimation(state, callback) {
     cardTop.style.opacity = "0";
     cardMiddle.style.opacity = "0";
     cardBottom.style.opacity = "0";
+    expanded.style.opacity = "1";
+    shrink.style.opacity = "0";
   } else if (state === 'shrink') {
     card.style.width = "70%";
     card.style.height = "70%";
@@ -171,6 +174,8 @@ function startAnimation(state, callback) {
     cardTop.style.opacity = "0";
     cardMiddle.style.opacity = "0";
     cardBottom.style.opacity = "0";
+    expanded.style.opacity = "0";
+    shrink.style.opacity = "1";
   } else {
     card.style.width = "94.5%";
     card.style.height = "90%";
@@ -181,6 +186,8 @@ function startAnimation(state, callback) {
     cardTop.style.opacity = "1";
     cardMiddle.style.opacity = "1";
     cardBottom.style.opacity = "1";
+    expanded.style.opacity = "0";
+    shrink.style.opacity = "0";
   }
 
   card.addEventListener('transitionend', function() {

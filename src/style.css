@@ -1,7 +1,6 @@
 * {
     font-family: 'Manrope', OCR A Std, monospace;
     color: #d4d4d4;
-    font-weight: 400;
     text-decoration: none;
     margin: 0;
 }
@@ -20,6 +19,22 @@ body {
     overflow: hidden;
     background-image: linear-gradient(to bottom right, rgba(28, 37, 35, 0.9) , rgba(24, 39, 33, 0.9));
 }
+
+/* video card  */
+
+#video-container {
+    position: absolute;
+    width: 94.5%;
+    height: 90%;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    transition: width 1s, height 1s;
+}
+#video {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+} 
 #card {
     display: flex;
     flex-direction: column;
@@ -33,6 +48,9 @@ body {
     border: 1px solid rgba(255,255,255,0.3);
     transition: width 1s, height 1s;
 }
+
+/* top of card */
+
 #card-top {
     display:flex;
     justify-content: space-between;
@@ -48,19 +66,6 @@ body {
     box-shadow: 1px 1px 1rem rgb(26 26 26 / 15%);
     margin: 1rem;
 }
-#video-container {
-    position: absolute;
-    width: 94.5%;
-    height: 90%;
-    overflow: hidden;
-    border-radius: 1.25rem;
-    transition: width 1s, height 1s;
-}
-#video {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-} 
 #button-grid {
     display: flex;
     flex-wrap: wrap;
@@ -90,41 +95,14 @@ body {
 #button3 {
     border-radius: 0.25rem 1.25rem 0.25rem 0.25rem;
 }
-#card-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    animation: sideAnimation ease-in-out 1s;
-    transition: opacity 0.3s ease;
-    
-}
-#message {
-    font-size: 1rem;
-    margin: 1rem;
-}
-#icon-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-right: 10px;
-}
-.icon {
-    height: 35px;
-    margin: 0.25rem;
-    transition: transform .2s ease-out;
-    transform: scale(1.01);
-    opacity: 0.5;
-}
-.icon:hover {
-    transform: scale(1.15);
-    opacity: 1;
-}
+
+/* middle of card */
+
 #card-middle {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     transition: opacity 0.3s ease;
-    
 }
 #side {
     display: flex;
@@ -249,84 +227,96 @@ body {
     background-color: rgb(46, 46, 46);
     text-align: center;
 }
-#projects {
+
+/* bottom of card */
+
+#card-bottom {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    width: 420px;
-    height: 491px;
+    align-items: flex-end;
+    animation: sideAnimation ease-in-out 1s;
+    transition: opacity 0.3s ease;
+}
+#message {
     font-size: 1rem;
-    outline: 1px solid;
-    outline-color: rgba(255, 255, 255, .5);
-    border-radius: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.05);
-    align-items: center;
+    margin: 1rem;
 }
-#project-title {
-    width: 360px;
-    height: 40px;
-    text-align: center;
-}
-#project-desc {
+#icon-bar {
     display: flex;
-    width: 300px;
-    height: 100px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-right: 10px;
 }
-.project {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 15px;
-    width: 380px;
-    outline: 1px solid;
-    outline-color: rgba(255, 255, 255, 1);
-    padding: 10px;
-    border-radius: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.05);
+.icon {
+    height: 35px;
+    margin: 0.25rem;
+    transition: transform .2s ease-out;
+    transform: scale(1.01);
+    opacity: 0.5;
 }
-#trademe {
-    display: flex;
-    flex-direction: row-reverse;
+.icon:hover {
+    transform: scale(1.15);
+    opacity: 1;
 }
-#project-image {
-    margin: 10px;
-    margin-bottom: 5px;
-}
-#project-title {
-    font-size: 2rem;
-    font-weight: bolder;
-    margin-top: 5px;
-}
+
+/* expand page */
+
 #expanded {
     display: none;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    transition: opacity 0.5s ease;
 }
-#expand-message {
-    text-align: center;
-    font-weight: bold;
+#projects {
+    display: flex;
+    margin: 20rem;
+    font-size: 1.5rem;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#project-title {
+    display: flex;
+    justify-content: center;
     font-size: 3rem;
+    font-weight: bold;
 }
+.project {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#project-image {
+    margin: 10px;
+}
+#trademe {
+    flex-direction: row-reverse;
+}
+#project-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* shrink page */
+
 #shrink {
     display: none;
     justify-content: center;
     align-items: center;
     height: 70vh;
+    transition: opacity 0.3s ease;
 }
-#shrink-message {
+#contact-title {
     text-align: center;
     font-weight: bold;
     font-size: 3rem;
 }
-@media (max-width: 1440px) {
-    #projects {
-        display: none;
-    }
-}
+
+/* proper scaling on all screen sizes */
+
 @media (min-width: 1000px) {
     @media (max-height: 530px) {
         #page {
@@ -339,9 +329,6 @@ body {
 }
 @media (max-height: 700px) {
     #globeViz {
-        display: none;
-    }
-    #projects {
         display: none;
     }
     #github-iframe {
@@ -465,6 +452,9 @@ body {
         display: block;
     }
 }
+
+/* animations */
+
 @keyframes sideAnimation {
     0% {
         opacity: 0;
