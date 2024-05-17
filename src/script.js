@@ -122,50 +122,98 @@ let cardTop = document.getElementById('card-top');
 let cardMiddle = document.getElementById('card-middle');
 let cardBottom = document.getElementById('card-bottom');
 let expanded = document.getElementById('expanded');
+let shrink = document.getElementById('shrink');
+let isAnimating = false;
+const animationDelay = 500;
 
 document.addEventListener('wheel', function(event) {
-  let deltaY = event.deltaY;
-  let scrollTop = window.scrollY || document.documentElement.scrollTop;
+  if (isAnimating) return;
 
-  if (event.target === card || event.target === cardTop || event.target === cardBottom || event.target === cardMiddle || event.target === page || event.target === expanded) {
+  let deltaY = event.deltaY || -event.wheelDelta;
+
+  if (event.target === card || event.target === cardTop || event.target === cardBottom || event.target === cardMiddle || event.target === page || event.target === expanded || event.target === shrink) {
     if (deltaY > 0) {
-      if (!card.classList.contains('expanded')) {
-        card.classList.add('expanded');
-        card.style.width = "100%";
-        card.style.height = "100%";
-        videoContainer.style.width = "100%"
-        videoContainer.style.height = "100%"
-        card.style.border = "0px";
-        card.style.borderRadius = "0rem";
-        cardTop.style.opacity = "0";
-        cardMiddle.style.opacity = "0";
-        cardBottom.style.opacity = "0";
-        card.addEventListener('transitionend', expandAnimation, { once: true });
+      if (card.classList.contains('shrink')) {
+        startAnimation('default', normalAnimation);
+      } else if (!card.classList.contains('expanded')) {
+        startAnimation('expanded', expandAnimation);
       }
-    } else {
-      if (scrollTop <= page.offsetTop) {
-        card.classList.remove('expanded');
-        card.style.width = "94.5%";
-        card.style.height = "90%";
-        videoContainer.style.width = "94.5%"
-        videoContainer.style.height = "90%"
-        card.style.border = "1px solid rgba(255,255,255,0.3)";
-        card.style.borderRadius = "1.25rem";
-        cardTop.style.opacity = "1";
-        cardMiddle.style.opacity = "1";
-        cardBottom.style.opacity = "1";
-        cardTop.style.display = "flex";
-        cardMiddle.style.display = "flex";
-        cardBottom.style.display = "flex";
-        expanded.style.display = "none";
+    } else if (deltaY < 0) {
+      if (card.classList.contains('expanded')) {
+        startAnimation('default', normalAnimation);
+      } else if (!card.classList.contains('shrink')) {
+        startAnimation('shrink', shrinkAnimation);
       }
     }
   }
 });
+
+function startAnimation(state, callback) {
+  isAnimating = true;
+  card.classList.remove('expanded', 'shrink');
+  card.classList.add(state);
+
+  if (state === 'expanded') {
+    card.style.width = "100%";
+    card.style.height = "100%";
+    videoContainer.style.width = "100%";
+    videoContainer.style.height = "100%";
+    card.style.border = "0px";
+    card.style.borderRadius = "0rem";
+    cardTop.style.opacity = "0";
+    cardMiddle.style.opacity = "0";
+    cardBottom.style.opacity = "0";
+  } else if (state === 'shrink') {
+    card.style.width = "70%";
+    card.style.height = "70%";
+    videoContainer.style.width = "70%";
+    videoContainer.style.height = "70%";
+    cardTop.style.opacity = "0";
+    cardMiddle.style.opacity = "0";
+    cardBottom.style.opacity = "0";
+  } else {
+    card.style.width = "94.5%";
+    card.style.height = "90%";
+    videoContainer.style.width = "94.5%";
+    videoContainer.style.height = "90%";
+    card.style.border = "1px solid rgba(255,255,255,0.3)";
+    card.style.borderRadius = "1.25rem";
+    cardTop.style.opacity = "1";
+    cardMiddle.style.opacity = "1";
+    cardBottom.style.opacity = "1";
+  }
+
+  card.addEventListener('transitionend', function() {
+    callback();
+    setTimeout(() => {
+      isAnimating = false;
+    }, animationDelay);
+  }, { once: true });
+}
 
 function expandAnimation() {
   cardTop.style.display = "none";
   cardMiddle.style.display = "none";
   cardBottom.style.display = "none";
   expanded.style.display = "flex";
+  shrink.style.display = "none";
 }
+
+function shrinkAnimation() {
+  cardTop.style.display = "none";
+  cardMiddle.style.display = "none";
+  cardBottom.style.display = "none";
+  expanded.style.display = "none";
+  shrink.style.display = "flex";
+}
+
+function normalAnimation() {
+  cardTop.style.display = "flex";
+  cardMiddle.style.display = "flex";
+  cardBottom.style.display = "flex";
+  expanded.style.display = "none";
+  shrink.style.display = "none";
+}
+
+
+// https://github.com/juliangarnier/anime/ 

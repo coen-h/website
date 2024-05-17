@@ -31,7 +31,7 @@ body {
     backdrop-filter: blur(40px);
     box-shadow: 10px 10px 12px rgba(0,0,0,0.25);
     border: 1px solid rgba(255,255,255,0.3);
-    transition: width 0.5s, height 0.5s;
+    transition: width 1s, height 1s;
 }
 #card-top {
     display:flex;
@@ -44,7 +44,6 @@ body {
     background-color: rgba(255,255,255,.05);
     border-radius: 1.25rem 0.25rem 0.25rem 0.25rem;
     padding: 0.5rem 1rem;
-    transition: all .2s;
     position: relative;
     box-shadow: 1px 1px 1rem rgb(26 26 26 / 15%);
     margin: 1rem;
@@ -55,7 +54,7 @@ body {
     height: 90%;
     overflow: hidden;
     border-radius: 1.25rem;
-    transition: width 0.5s, height 0.5s;
+    transition: width 1s, height 1s;
 }
 #video {
     width: 100%;
@@ -308,6 +307,17 @@ body {
     height: 100vh;
 }
 #expand-message {
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+}
+#shrink {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+#shrink-message {
     text-align: center;
     font-weight: bold;
     font-size: 3rem;
