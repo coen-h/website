@@ -124,6 +124,7 @@ let cardBottom = document.getElementById('card-bottom');
 let expanded = document.getElementById('expanded');
 let shrink = document.getElementById('shrink');
 let projects = document.getElementById('projects');
+let spotify = document.getElementById('github-iframe')
 let isAnimating = false;
 const animationDelay = 1000;
 
@@ -166,6 +167,7 @@ function startAnimation(state, callback) {
     cardBottom.style.opacity = "0";
     expanded.style.opacity = "1";
     shrink.style.opacity = "0";
+    spotify.style.animation = "sideAnimation ease-out 1s";
   } else if (state === 'shrink') {
     card.style.width = "70%";
     card.style.height = "70%";
@@ -176,6 +178,7 @@ function startAnimation(state, callback) {
     cardBottom.style.opacity = "0";
     expanded.style.opacity = "0";
     shrink.style.opacity = "1";
+    spotify.style.animation = "sideAnimation ease-out 1s";
   } else {
     card.style.width = "90%";
     card.style.height = "85.5%";
@@ -221,6 +224,3 @@ function normalAnimation() {
   expanded.style.display = "none";
   shrink.style.display = "none";
 }
-
-
-// https://github.com/juliangarnier/anime/ 

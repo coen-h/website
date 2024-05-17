@@ -266,11 +266,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.3s ease;
 }
 #projects {
     display: flex;
-    margin: 25rem;
+    margin: 28rem;
     font-size: 1.5rem;
     height: 100vh;
     flex-direction: column;
@@ -288,13 +288,16 @@ body {
     flex-direction: row;
     justify-content: space-between;
     outline: 1px solid;
-    outline-color: rgba(255, 255, 255, .5);
+    outline-color: rgba(255, 255, 255, .7);
     background-color: rgba(255,255,255,.1);
     border-radius: 1rem;
     margin-bottom: 2rem;
 }
 #project-image {
     margin: 10px;
+    outline: 1px solid;
+    outline-color: rgba(255, 255, 255, .4);
+    border-radius: 5px;
 }
 #trademe {
     flex-direction: row-reverse;
@@ -324,7 +327,29 @@ body {
     font-size: 3rem;
 }
 
-/* proper scaling on all screen sizes */
+/* scrollbar */
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+    margin-bottom: 10px; 
+}
+
+::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+    margin-top: 10px;
+}
+
+/* manage screen sizes */
 
 @media (min-width: 1000px) {
     @media (max-height: 530px) {
