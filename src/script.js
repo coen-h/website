@@ -69,7 +69,7 @@ const world = Globe()
     .pointOfView({ lat: -40.9006, lng: 174.8860, altitude: 0 })
     .showGlobe(false)
     .showAtmosphere(false)
-    .height(370);
+    .height(360);
 
 world(globeVizDiv);
 
@@ -180,10 +180,10 @@ function startAnimation(state, callback) {
     shrink.style.opacity = "1";
     spotify.style.animation = "sideAnimation ease-out 1s";
   } else {
-    card.style.width = "90%";
-    card.style.height = "85.5%";
-    videoContainer.style.width = "90%";
-    videoContainer.style.height = "85.5%";
+    card.style.width = "93%";
+    card.style.height = "88.5%";
+    videoContainer.style.width = "93%";
+    videoContainer.style.height = "88.5%";
     card.style.border = "1px solid rgba(255,255,255,0.3)";
     card.style.borderRadius = "1.25rem";
     cardTop.style.opacity = "1";
