@@ -28,6 +28,12 @@ const greetingElement = document.getElementById("greeting");
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    let scrolltop = document.getElementById("scroll-top");
+
+    setTimeout(function() {
+      scrolltop.style.opacity = "1";
+    }, 3000);
+
     updateTimeGreeting();
   });  
 
@@ -125,6 +131,7 @@ let expanded = document.getElementById('expanded');
 let shrink = document.getElementById('shrink');
 let projects = document.getElementById('projects');
 let spotify = document.getElementById('github-iframe')
+let scrolltop = document.getElementById("scroll-top");
 let isAnimating = false;
 const animationDelay = 1000;
 
@@ -167,6 +174,7 @@ function startAnimation(state, callback) {
     cardBottom.style.opacity = "0";
     expanded.style.opacity = "1";
     shrink.style.opacity = "0";
+    scrolltop.style.display = "none";
     spotify.style.animation = "sideAnimation ease-out 1s";
   } else if (state === 'shrink') {
     card.style.width = "70%";
@@ -178,6 +186,7 @@ function startAnimation(state, callback) {
     cardBottom.style.opacity = "0";
     expanded.style.opacity = "0";
     shrink.style.opacity = "1";
+    scrolltop.style.display = "none";
     spotify.style.animation = "sideAnimation ease-out 1s";
   } else {
     card.style.width = "93%";
