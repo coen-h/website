@@ -17,7 +17,7 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-image: linear-gradient(to bottom right, rgba(20, 22, 20, 0.9) , rgba(19, 22, 24, 0.9));
+    background-image: linear-gradient(to bottom right, rgba(22, 33, 22, 0.92) , rgba(26, 27, 28, 0.9));
 }
 
 /* video card  */
@@ -348,7 +348,6 @@ body {
 }
 .about-icon {
     height: 50px;
-    
     margin: 0.5rem;
     transition: transform .2s ease-out;
     transform: scale(1.01);
@@ -357,6 +356,9 @@ body {
 .about-icon:hover {
     transform: scale(1.15);
     opacity: 1;
+}
+#shrink-small {
+    display: none;
 }
 
 /* scrollbar */
@@ -421,6 +423,15 @@ body {
         #card-middle {
             justify-content: center;
         }
+        #about-title {
+            font-size: 1.8rem;
+        }
+        #about-content {
+            font-size: 1.2rem;
+        }
+        .about-icon {
+            height: 45px;
+        }
     }
     @media (max-height: 530px) {
         #projects {
@@ -428,6 +439,15 @@ body {
         }
         #expand-small {
             display: flex;
+        }
+        #about-title {
+            font-size: 1.5rem;
+        }
+        #about-content {
+            font-size: 1rem;
+        }
+        .about-icon {
+            height: 40px;
         }
     }
     @media (max-height: 300px) {
@@ -517,6 +537,16 @@ body {
     }
     #user {
         width: 300px;
+    }
+    #about-title {
+        font-size: 1.4rem;
+    }
+    #about-content {
+        font-size: 0.9rem;
+        width: 60vw;
+    }
+    .about-icon {
+        height: 40px;
     }
 }
 @media (max-width: 430px) {
