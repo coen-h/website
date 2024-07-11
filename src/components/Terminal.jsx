@@ -21,7 +21,7 @@ export default function Terminal() {
 
     switch (cmd.toLowerCase()) {
       case 'help':
-        response = 'source code on <a href="https://github.com/coen-h/website" target="_blank">github</a>';
+        response = '- help\n- start \n- stop \n \n figure the rest out yourself :) \n source code on <a id="github-link" href="https://github.com/coen-h/website" target="_blank">Github</a>';
         break;
       case 'time':
         response = new Date().getTime();
@@ -102,6 +102,9 @@ export default function Terminal() {
       case 'start':
         response = startSite();
         break;
+      case 'stop':
+        response = stopSite();
+        break;
       default:
         response = `Command not found: ${command}`;
     }
@@ -167,7 +170,7 @@ export default function Terminal() {
     const contents = fileSystem[dir];
     if (!contents) return `Directory not found: ${dir}`;
 
-    const result = ['Mode         LastWriteTime      Length  Name', '----         -------------      ------  ----'];
+    const result = [];
     for (const [name, type] of Object.entries(contents)) {
       const isDirectory = type !== 'file';
       result.push(`${isDirectory ? 'd-----' : '-a----'}   ${new Date().toLocaleString()}   ${isDirectory ? '4096' : ' 147'}   ${name}`);
@@ -200,7 +203,11 @@ export default function Terminal() {
   const startSite = () => {
     const site = document.getElementById("site");
     site.style.display = "flex";
-    return `Site Started!`
+  }
+
+  const stopSite = () => {
+    const site = document.getElementById("site");
+    site.style.display = "none";
   }
 
   useEffect(() => {
