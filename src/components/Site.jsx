@@ -35,6 +35,7 @@ const stopSite = () => {
 
 export default function Site() {
     const [items, setItems] = useState([]);
+    const [user, setUser] = useState([]);
     const [iframeSrc, setIframeSrc] = useState('');
 
     useEffect(() => {
@@ -44,6 +45,12 @@ export default function Site() {
             setItems(data);
         };
 
+        const fetchUser = async () => {
+            const response = await fetch('https://api.github.com/users/coen-h');
+            const data = await response.json();
+            setUser(data);
+        };
+
         const fetchSpotify = async () => {
             const response = await fetch('https://api.github.com/repos/coen-h/spotify/contents/player.min.html');
             const data = await response.json();
@@ -51,6 +58,7 @@ export default function Site() {
         };
 
         fetchItems();
+        fetchUser();
         fetchSpotify();
     }, []);
 
@@ -63,16 +71,38 @@ export default function Site() {
             <div id="card-middle" style={{display: "flex", justifyContent: "center", gap: "20px"}}>
                 <div id="user">
                     <p style={{fontSize: "1.5rem"}}>Hi, My names Coen.</p>
-                    <pre style={{fontSize: "1.5vh"}}>{generateGlobe()}</pre>
+                    <pre id="globe">{generateGlobe()}</pre>
                     <div style={{display: "flex", flexDirection: "column", gap: "4px"}}>
                         <p>Auckland, New Zealand</p>
                         <p style={{fontSize: "0.75rem"}}>"Worry never robs tomorrow of its sorrow, it only saps today of its joy."</p>
                     </div>
                 </div>
                 <div>
-                    <iframe style={{border: "0", width: "420px", height: "151px", borderRadius: "16px", marginBottom: "5px"}} src={iframeSrc}></iframe>
+                    <div id="card">
+                        <div style={{display: "flex", gap: "15px", justifyContent: "center"}}>
+                            <img src={user.avatar_url} id="user-image" />
+                            <div id="user-info">
+                                <p style={{fontSize: "1.3rem"}}>{user.name}</p>
+                                <p id="user-bio">{user.bio}</p>
+                            </div>
+                        </div>
+                        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                            <a href="mailto:me@coen.ovh" target="_blank">
+                                <img id="social" style={{width: "41px", height: "41px", margin: "0 8px 4px 0"}} src="/mail.svg" />
+                            </a>
+                            <a href="https://github.com/coen-h" target="_blank">
+                                <img id="social" style={{width: "35px", height: "35px", marginRight: "10px"}} src="/github.svg" />
+                            </a>
+                            <a href="https://t.me/coen_h" target="_blank">
+                                <img id="social" style={{width: "35px", height: "35px", marginRight: "5px"}} src="/telegram.svg" />
+                            </a>
+                            <a href="https://discordapp.com/users/676659509711732737" target="_blank">
+                                <img id="social" style={{width: "45px", height: "45px"}} src="/discord.svg" />
+                            </a>
+                        </div>
+                    </div>
                     <div id="github-container">
-                        <div id="github-content" style={{display: "flex", flexDirection: "column-reverse", gap: "20px"}}>
+                        <div style={{display: "flex", flexDirection: "column-reverse", gap: "20px"}}>
                             {items.map((item) => (
                                 <a id="github-card" key={item.name} href={item.html_url}>
                                     <div style={{textAlign: "center", borderBottom: "1px solid rgba(255, 255, 255, 0.2)"}}>
@@ -88,37 +118,29 @@ export default function Site() {
                         </div>
                     </div>
                 </div>
-                <div style={{textAlign: "center"}} id="projects">
-                    <div>
-                        <img style={{width: "30vh"}} src='/zmov.jpg' />
-                        <div>
-                            <p style={{fontSize: "1.5rem"}}>zmov</p>
-                            <p style={{width: "300px"}}>My movie site made using React, Vite, and the TMDB API.</p>
+                <div id="mid-right">
+                    <iframe id="spotify" src={iframeSrc}></iframe>
+                    <div id="projects">
+                        <div style={{borderBottom: "1px solid rgba(255, 255, 255, 0.05)", paddingBottom: "20px"}}>
+                            <img style={{width: "100%", borderRadius: "8px"}} src='/zmov.jpg' />
+                            <div>
+                                <p style={{fontSize: "1.5rem"}}>zmov</p>
+                                <p style={{width: "380px"}}>My movie site made using React, Vite, and the TMDB API.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <img style={{width: "30vh"}} src='/website.jpg' />
-                        <div>
-                            <p style={{fontSize: "1.5rem"}}>My Website</p>
-                            <p style={{width: "300px"}}>The website you are on right now, now remade using React.</p>
+                        <div style={{borderBottom: "1px solid rgba(255, 255, 255, 0.05)", paddingBottom: "20px"}}>
+                            <img style={{width: "100%", borderRadius: "8px"}} src='/website.jpg' />
+                            <div>
+                                <p style={{fontSize: "1.5rem"}}>My Website</p>
+                                <p style={{width: "380px"}}>The website you are on right now, now remade using React.</p>
+                            </div>
                         </div>
+                        <p style={{fontSize: "1.5rem", textDecoration: "underline"}}>MORE COMING SOON</p>
                     </div>
-                    <p style={{textDecoration: "underline", fontSize: "1.2rem"}}>MORE COMING SOON</p>
                 </div>
             </div>
-            <div id="card-bottom" style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+            <div id="card-bottom">
                 <p>work in progress :)</p>
-                <div>
-                    <a href="mailto:me@coen.ovh">
-                        <img style={{height: "32px"}} src="./assets/email.png" />
-                    </a>
-                    <a href="https://github.com/coen-h">
-                        <img src="./assets/github-mark-white.png" />
-                    </a>
-                    <a href="https://discordapp.com/users/676659509711732737">
-                        <img src="./assets/discord.jpg" />
-                    </a>
-                </div>
             </div>
         </div>
     )
