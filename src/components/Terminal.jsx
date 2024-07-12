@@ -223,13 +223,15 @@ export default function Terminal() {
         </div>
       ))}
       <div id="input">
-        <input
-          className="input"
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleInput}
-        />
+        <label>
+          <input
+            className="input"
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleInput}
+          />
+        </label>
       </div>
       <div ref={terminalRef} />
     </div>
