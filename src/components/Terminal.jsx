@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import fileSystem from './fileSystem';
 
 export default function Terminal() {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState([]);
   const [currentDir, setCurrentDir] = useState('C:\\users\\coen\\repos\\website');
-  const [startTime, setStartTime] = useState(Date.now());
+  const startTime =  Date.now();
   const terminalRef = useRef(null);
 
   const handleInput = (event) => {
@@ -98,12 +98,6 @@ export default function Terminal() {
         break;
       case 'mv':
         response = `mv: cannot move '${args[0]}' to '${args[1]}': Permission denied`;
-        break;
-      case 'start':
-        response = startSite();
-        break;
-      case 'stop':
-        response = stopSite();
         break;
       default:
         response = `Command not found: ${command}`;
@@ -200,31 +194,20 @@ export default function Terminal() {
     terminalRef.current.scrollIntoView({ block: 'end' });
   };
 
-  const startSite = () => {
-    const site = document.getElementById("site");
-    site.style.display = "flex";
-  }
-
-  const stopSite = () => {
-    const site = document.getElementById("site");
-    site.style.display = "none";
-  }
-
   useEffect(() => {
     scrollToBottom();
   }, [output]);
 
   return (
-    <div id="terminal">
+    <div>
       {output.map((item, index) => (
         <div key={index} className="output">
           <pre>{`> ${item.command}`}</pre>
           <pre dangerouslySetInnerHTML={{ __html: item.response }} />
         </div>
       ))}
-      <div id="input">
+      <div>
         <input
-          className="input"
           aria-label="Input"
           type="text"
           value={input}
@@ -235,4 +218,4 @@ export default function Terminal() {
       <div ref={terminalRef} />
     </div>
   );
-};
+}

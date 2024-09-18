@@ -1,12 +1,11 @@
-import React from 'react'
-import Terminal from './components/Terminal'
 import Site from './components/Site'
+import Temp from './components/Temp'
 
 export default function App() {
   return (
     <>
+      <Temp />
       <Site />
-      <Terminal />
     </>
   )
 }

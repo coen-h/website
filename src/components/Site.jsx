@@ -28,11 +28,6 @@ HMMMMMMMHo                 \`MMMMMMMMMT       .
     `;
 }
 
-const stopSite = () => {
-    const site = document.getElementById("site");
-    site.style.display = "none";
-}
-
 export default function Site() {
     const [items, setItems] = useState([]);
     const [user, setUser] = useState([]);
@@ -63,53 +58,52 @@ export default function Site() {
     }, []);
 
     return (
-        <div id="site">
-            <div id="card-top" style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-                <p style={{fontSize: "2rem", textDecoration: "underline"}}>Welcome</p>
-                <button id="exit-button" onClick={stopSite}>X</button>
+        <div id="site" className='w-11/12 h-5/6 bg-black'>
+            <div className='flex justify-between items-center'>
+                <p className='text-3xl underline'>Welcome</p>
             </div>
-            <div id="card-middle" style={{display: "flex", justifyContent: "center", gap: "20px"}}>
-                <div id="user">
-                    <p style={{fontSize: "1.5rem"}}>Hi, My names Coen.</p>
-                    <pre id="globe">{generateGlobe()}</pre>
-                    <div style={{display: "flex", flexDirection: "column", gap: "4px"}}>
+            <div className='flex content-center gap-5'>
+                <div className='flex flex-col items-center'>
+                    <p className='text-2xl'>Hi, My names Coen.</p>
+                    <pre>{generateGlobe()}</pre>
+                    <div className='flex flex-col gap-1'>
                         <p>Auckland, New Zealand</p>
-                        <p style={{fontSize: "0.75rem"}}>"Worry never robs tomorrow of its sorrow, it only saps today of its joy."</p>
+                        <p className='text-xs'>&quot;Worry never robs tomorrow of its sorrow, it only saps today of its joy.&quot;</p>
                     </div>
                 </div>
                 <div>
-                    <div id="card">
-                        <div style={{display: "flex", gap: "15px", justifyContent: "center"}}>
-                            <img src={user.avatar_url} id="user-image" />
-                            <div id="user-info">
-                                <p style={{fontSize: "1.3rem"}}>{user.name}</p>
-                                <p id="user-bio">{user.bio}</p>
+                    <div>
+                        <div className='flex gap-4 content-center'>
+                            <img src={user.avatar_url}/>
+                            <div>
+                                <p className='text-xl'>{user.name}</p>
+                                <p>{user.bio}</p>
                             </div>
                         </div>
-                        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                        <div className='flex content-center items-center'>
                             <a href="mailto:me@coen.ovh" target="_blank">
-                                <img id="social" style={{width: "41px", height: "41px", margin: "0 8px 4px 0"}} src="/mail.svg" />
+                                <img className='w-10 h-10 mr-2 mb-1' src="/mail.svg" />
                             </a>
                             <a href="https://github.com/coen-h" target="_blank">
-                                <img id="social" style={{width: "35px", height: "35px", marginRight: "10px"}} src="/github.svg" />
+                                <img className='w-9 h-9 mr-2' style={{width: "35px", height: "35px", marginRight: "10px"}} src="/github.svg" />
                             </a>
                             <a href="https://t.me/coen_h" target="_blank">
-                                <img id="social" style={{width: "35px", height: "35px", marginRight: "5px"}} src="/telegram.svg" />
+                                <img className='w-9 h-9 mr-1' style={{width: "35px", height: "35px", marginRight: "5px"}} src="/telegram.svg" />
                             </a>
                             <a href="https://discordapp.com/users/676659509711732737" target="_blank">
-                                <img id="social" style={{width: "45px", height: "45px"}} src="/discord.svg" />
+                                <img className='w-11 h-11' src="/discord.svg" />
                             </a>
                         </div>
                     </div>
-                    <div id="github-container">
-                        <div style={{display: "flex", flexDirection: "column-reverse", gap: "20px"}}>
+                    <div>
+                        <div className='flex flex-col-reverse gap-5'>
                             {items.map((item) => (
-                                <a id="github-card" key={item.name} href={item.html_url}>
-                                    <div style={{textAlign: "center", borderBottom: "1px solid rgba(255, 255, 255, 0.2)"}}>
-                                        <p style={{fontSize: "1.3rem"}}>{item.name}</p>
+                                <a key={item.name} href={item.html_url}>
+                                    <div className='text-center border-b-gray-700'>
+                                        <p className='text-xl'>{item.name}</p>
                                         <p>{item.description || 'No description provided'}</p>
                                     </div>
-                                    <div style={{display: "flex", justifyContent: "space-between"}}>
+                                    <div className='flex content-between'>
                                         <p>{item.stargazers_count} Stars</p>
                                         <p>{item.open_issues} Issues</p>
                                     </div>
@@ -118,28 +112,28 @@ export default function Site() {
                         </div>
                     </div>
                 </div>
-                <div id="mid-right">
-                    <iframe id="spotify" src={iframeSrc}></iframe>
-                    <div id="projects">
-                        <div style={{borderBottom: "1px solid rgba(255, 255, 255, 0.05)", paddingBottom: "20px"}}>
-                            <img style={{width: "100%", borderRadius: "8px"}} src='/zmov.jpg' />
+                <div>
+                    <iframe src={iframeSrc}></iframe>
+                    <div>
+                        <div className='border-b-gray-800 pb-5'>
+                            <img className='w-full border-r-8' src='/zmov.jpg' />
                             <div>
-                                <p style={{fontSize: "1.5rem"}}>zmov</p>
-                                <p style={{width: "380px"}}>My movie site made using React, Vite, and the TMDB API.</p>
+                                <p className='text-2xl'>zmov</p>
+                                <p className='w-96'>My movie site made using React, Vite, and the TMDB API.</p>
                             </div>
                         </div>
-                        <div style={{borderBottom: "1px solid rgba(255, 255, 255, 0.05)", paddingBottom: "20px"}}>
-                            <img style={{width: "100%", borderRadius: "8px"}} src='/website.jpg' />
+                        <div className='border-b-gray-800 pb-5'>
+                            <img className='w-full border-r-8' src='/website.jpg' />
                             <div>
-                                <p style={{fontSize: "1.5rem"}}>My Website</p>
-                                <p style={{width: "380px"}}>The website you are on right now, now remade using React.</p>
+                                <p className='text-2xl'>My Website</p>
+                                <p className='w-96'>The website you are on right now, now remade using React.</p>
                             </div>
                         </div>
-                        <p style={{fontSize: "1.5rem", textDecoration: "underline"}}>MORE COMING SOON</p>
+                        <p className='text-2xl underline'>MORE COMING SOON</p>
                     </div>
                 </div>
             </div>
-            <div id="card-bottom">
+            <div>
                 <p>work in progress :)</p>
             </div>
         </div>
