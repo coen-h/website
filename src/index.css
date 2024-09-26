@@ -7,12 +7,12 @@
   color: #f0fff8;
 }
 body {
-  background-color: rgb(3,6,3);
+  background-color: rgb(15, 26, 15);
   margin: 0;
 }
 
 
 
-#site {
-  display: none;
-}
+/* #site { */
+  /* display: none; */
+/* } */
