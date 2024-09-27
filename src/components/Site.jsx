@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { generateGlobe1, generateGlobe2, generateEarth } from './globeArt'
+import { generateGlobe1, generateGlobe2, generateSaturn, generateEarth } from './globeArt'
 
 export default function Site() {
     const [items, setItems] = useState([]);
@@ -38,7 +38,7 @@ export default function Site() {
             <div className='flex justify-center gap-5'>
                 <div className='flex flex-col items-center justify-center w-3/5'>
                     <p className='text-2xl'>Hi, My names Coen.</p>
-                    <pre className='text-center text-[0.8vw]'>{generateGlobe3()}</pre>
+                    <pre className='text-center text-[1.5vw]'>{generateSaturn()}</pre>
                     <div className='flex flex-col gap-1'>
                         <p className='text-center'>Auckland, New Zealand</p>
                         <p className='text-xs text-center'>&quot;Worry never robs tomorrow of its sorrow, it only saps today of its joy.&quot;</p>
