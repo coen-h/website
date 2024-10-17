@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
+import Terminal from './Terminal'
 import { generateGlobe1, generateGlobe2, generateSaturn, generateEarth, generateName } from './globeArt'
 
 export default function Site() {
     const [items, setItems] = useState([]);
     const [user, setUser] = useState([]);
     const [iframeSrc, setIframeSrc] = useState('');
+    const [terminal, setTerminal] = useState(false);
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -31,9 +33,10 @@ export default function Site() {
     }, []);
 
     return (
-        <div className='flex flex-col justify-between fixed w-[96vw] h-[92vh] p-[0.5rem] my-[4vh] mx-[2vw] bg-black bg-opacity-75 backdrop-blur-md border-2 border-white border-opacity-10 rounded-xl'>
-            <div className='flex justify-between items-center'>
-                <p className='text-4xl underline'>Welcome</p>
+    <>
+        <div className='flex flex-col justify-between fixed w-[98vw] h-[96vh] p-[0.5rem] my-[2vh] mx-[1vw] bg-black bg-opacity-75 backdrop-blur-md border-2 border-white border-opacity-10 rounded-xl animate-loaded'>
+            <div className='flex justify-between items-center gap-4'>
+                <p className='text-4xl underline max-xs:text-3xl'>Welcome</p>
                 <div className='flex justify-center gap-2 items-center'>
                     <a href="mailto:me@coen.ovh" target="_blank">
                         <img className='w-10 h-10 opacity-50 hover:opacity-100' src="/mail.svg" />
@@ -50,7 +53,7 @@ export default function Site() {
                 </div>
             </div>
             <div className='flex justify-center gap-5'>
-                <div className='flex flex-col items-center justify-center w-3/5 border-2 border-white border-opacity-10 rounded-lg py-2'>
+                <div className='flex flex-col items-center justify-center w-3/5 border-2 border-white border-opacity-10 rounded-lg py-2 max-lg:hidden'>
                     <div className='flex items-center justify-center gap-4'>
                         <p className='text-2xl'>Hi, My name is</p>
                         <pre className='text-[8px] leading-none [text-shadow:_0_0_5px_rgb(0_255_0_/_40%)]'>{generateName()}</pre>
@@ -61,7 +64,7 @@ export default function Site() {
                         <p className='text-xs text-center'>&quot;Worry never robs tomorrow of its sorrow, it only saps today of its joy.&quot;</p>
                     </div>
                 </div>
-                <div className='flex flex-col gap-5'>
+                <div className='flex flex-col gap-5 max-xl:hidden max-lg:flex'>
                     <div className='border-2 border-white border-opacity-10 rounded-lg py-2'>
                         <div className='flex gap-4 justify-center'>
                             <img className='w-16 h-16 rounded-full' src={user.avatar_url}/>
@@ -69,27 +72,27 @@ export default function Site() {
                                 <p className='text-xl'>{user.name}</p>
                                 <p>{user.bio}</p>
                                 <div className='flex gap-4 justify-center'>
-                                    <div className='flex flex-col gap-1'>
+                                    <div className='flex flex-col'>
                                         <p className='text-center'>{user.public_repos}</p>
-                                        <p className='font-light'>Repos</p>
+                                        <p className='font-light text-gray-300 text-sm'>Repos</p>
                                     </div>
-                                    <div className='flex flex-col gap-1'>
+                                    <div className='flex flex-col'>
                                         <p className='text-center'>{user.followers}</p> 
-                                        <p className='font-light'>Followers</p>
+                                        <p className='font-light text-gray-300 text-sm'>Followers</p>
                                     </div>
-                                    <div className='flex flex-col gap-1'>
+                                    <div className='flex flex-col'>
                                         <p className='text-center'>{user.following}</p>
-                                        <p className='font-light'>Following</p>
+                                        <p className='font-light text-gray-300 text-sm'>Following</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <div style={{height: "calc(93vh - 217px)"}} className='flex flex-col-reverse gap-5 overflow-scroll border-2 border-white border-opacity-10 rounded-lg p-2'>
+                        <div style={{height: "calc(96vh - 208px)"}} className='flex flex-col-reverse gap-3 overflow-scroll border-2 border-white border-opacity-10 rounded-lg p-2'>
                             {items.map((item) => (
-                                <a key={item.name} href={item.html_url}>
-                                    <div className='text-center border-b-gray-700'>
+                                <a className='border-2 border-opacity-20 p-1 border-white rounded-xl' key={item.name} href={item.html_url}>
+                                    <div className='text-center'>
                                         <p className='text-xl'>{item.name}</p>
                                         <p>{item.description || 'No description provided'}</p>
                                     </div>
@@ -102,27 +105,29 @@ export default function Site() {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col gap-5'>
+                <div className='flex flex-col gap-5 max-md:hidden'>
                     <iframe className='w-full rounded-lg' src={iframeSrc}></iframe>
-                    <div style={{height: "calc(93vh - 243px)"}} className='overflow-scroll border-2 border-white border-opacity-10 rounded-lg p-2'>
-                        <div className='border-b-gray-800 pb-5'>
+                    <div style={{height: "calc(96vh - 243px)"}} className='overflow-scroll border-2 border-white border-opacity-10 rounded-lg p-2'>
+                        <div className='pb-2'>
                             <img className='w-full rounded-lg' src='/zmov.jpg' />
                             <div>
                                 <p className='text-2xl text-center'>zmov</p>
                                 <p className='w-full text-center'>My movie site made using React, Vite, and the TMDB API.</p>
                             </div>
                         </div>
-                        <div className='border-b-gray-800 pb-5'>
+                        <div className='pb-4'>
                             <img className='w-full rounded-lg' src='/website.jpg' />
                             <div>
                                 <p className='text-2xl text-center'>My Website</p>
                                 <p className='w-full text-center'>The website you are on right now, now remade using React.</p>
                             </div>
                         </div>
-                        <p className='text-2xl underline text-center'>MORE COMING SOON</p>
+                        <button onClick={() => setTerminal(prevTerminal => !prevTerminal)} className='w-full h-10 rounded-lg bg-white bg-opacity-15 hover:bg-opacity-30 animate-pulse'>TERMINAL?</button>
                     </div>
                 </div>
             </div>
         </div>
+        {terminal && <Terminal setTerminal={setTerminal}/>}
+    </>
     )
 }

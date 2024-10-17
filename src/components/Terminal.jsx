@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import fileSystem from './fileSystem';
 
-export default function Terminal() {
+export default function Terminal({ setTerminal }) {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState([]);
   const [currentDir, setCurrentDir] = useState('C:\\users\\coen\\repos\\website');
@@ -99,6 +99,11 @@ export default function Terminal() {
       case 'mv':
         response = `mv: cannot move '${args[0]}' to '${args[1]}': Permission denied`;
         break;
+      case 'stop':
+      case 'close':
+      case 'shutdown':
+        setTerminal(false);
+      return;
       default:
         response = `Command not found: ${command}`;
     }
@@ -199,15 +204,17 @@ export default function Terminal() {
   }, [output]);
 
   return (
-    <div>
+    <div id="terminalSite" className='fixed w-screen h-screen bg-gray-950 overflow-scroll'>
       {output.map((item, index) => (
-        <div key={index} className="output">
+        <div key={index}>
           <pre>{`> ${item.command}`}</pre>
           <pre dangerouslySetInnerHTML={{ __html: item.response }} />
         </div>
       ))}
-      <div>
+      <div className='relative'>
+        <pre className='absolute top-0'>{'>'}</pre>
         <input
+          className='bg-gray-950 focus:outline-none pl-4 font-[600] text-[15px] font-[Courier New, monospace] w-11/12'
           aria-label="Input"
           type="text"
           value={input}
