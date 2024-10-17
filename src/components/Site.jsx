@@ -7,6 +7,8 @@ export default function Site() {
     const [user, setUser] = useState([]);
     const [iframeSrc, setIframeSrc] = useState('');
     const [terminal, setTerminal] = useState(false);
+    const globeFunctions = [generateGlobe1, generateGlobe2, generateSaturn, generateEarth];
+    const randomFunction = globeFunctions[Math.floor(Math.random() * globeFunctions.length)];
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -53,12 +55,12 @@ export default function Site() {
                 </div>
             </div>
             <div className='flex justify-center gap-5'>
-                <div className='flex flex-col items-center justify-center w-3/5 border-2 border-white border-opacity-10 rounded-lg py-2 max-lg:hidden'>
+                <div className='flex flex-col items-center justify-evenly w-3/5 border-2 border-white border-opacity-10 rounded-lg py-2 max-lg:hidden'>
                     <div className='flex items-center justify-center gap-4'>
                         <p className='text-2xl'>Hi, My name is</p>
                         <pre className='text-[8px] leading-none [text-shadow:_0_0_5px_rgb(0_255_0_/_40%)]'>{generateName()}</pre>
                     </div>
-                    <pre className='text-[1.5vh] leading-[1.6vh]'>{generateSaturn()}</pre>
+                    <pre className='text-[1.5vh] leading-[1.6vh]'>{randomFunction()}</pre>
                     <div className='flex flex-col gap-1'>
                         <p className='text-center'>Auckland, New Zealand</p>
                         <p className='text-xs text-center'>&quot;Worry never robs tomorrow of its sorrow, it only saps today of its joy.&quot;</p>

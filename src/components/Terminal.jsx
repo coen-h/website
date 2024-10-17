@@ -21,7 +21,7 @@ export default function Terminal({ setTerminal }) {
 
     switch (cmd.toLowerCase()) {
       case 'help':
-        response = '- start \n- stop \n \n figure the rest out yourself :) \n source code on <a id="github-link" href="https://github.com/coen-h/website" target="_blank">Github</a>';
+        response = 'source code on <a id="github-link" href="https://github.com/coen-h/website" target="_blank">Github</a>';
         break;
       case 'time':
         response = new Date().getTime();
