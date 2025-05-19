@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 * {
   font-family: 'JetBrains Mono', monospace;
+  transition: all 0.25s ease-out;
 }
 
-body {
-  background-color: rgb(15, 26, 15);
-  margin: 0;
+::-webkit-scrollbar {
+  width: 0px;
 }

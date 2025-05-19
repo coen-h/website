@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 
-export default function SpotifyWidget({ data }: { data: any }) {
+type SpotifyData = {
+  content: string;
+};
+
+export default function SpotifyWidget({ data }: { data?: SpotifyData }) {
   const [iframeSrc, setIframeSrc] = useState<string | null>(null);
 
   useEffect(() => {
@@ -12,5 +16,5 @@ export default function SpotifyWidget({ data }: { data: any }) {
     }
   }, [data]);
 
-  return <iframe className="w-full rounded-lg" src={iframeSrc}></iframe>;
+  return <iframe className="w-full border-x border-y-2 dark:border-white/10 border-black/20 rounded-lg" src={iframeSrc ?? undefined}></iframe>;
 }
