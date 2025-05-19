@@ -1,2 +1,2 @@
 # website
-new site now in react
+new site now in nextjs
