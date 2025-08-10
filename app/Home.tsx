@@ -10,6 +10,7 @@ import AboutMe from "./components/AboutMe";
 import WeatherCard from "./components/WeatherCard";
 import Contact from "./components/Contact";
 import GlobeViz from "./components/Globe";
+import Docker from "./components/Docker";
 
 type RepoItem = {
   name: string;
@@ -64,6 +65,7 @@ export default function Home({ githubData }: HomeProps) {
             {user && (<div className="max-[1200px]:flex hidden"><UserCard user={user} /></div>)}
             <Clock />
             <AboutMe />
+            <Docker />
             <Contact />
           </div>
 

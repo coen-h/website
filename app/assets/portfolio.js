@@ -7,11 +7,11 @@ const portfolio = [
     tags: ['react', 'javascript']
   },
   {
-    name: 'zmov',
-    description: 'My movie site made using React, Vite, and the TMDB API.',
-    link: 'https://github.com/coen-h/zmov',
-    image: 'https://raw.githubusercontent.com/coen-h/zmov/main/screenshots/home.png',
-    tags: ['react', 'tailwindcss', 'tmdb'],
+    name: 'parkinglot',
+    description: 'AI Parking Lot Monitoring, powered by Azure and NextJS.',
+    link: 'https://github.com/coen-h/parkinglot',
+    image: 'https://raw.githubusercontent.com/coen-h/website/main/public/screenshot.png',
+    tags: ['python', 'nextjs', 'tailwindcss'],
   },
   {
     name: 'website_',

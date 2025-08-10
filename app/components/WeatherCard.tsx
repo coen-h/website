@@ -25,6 +25,7 @@ export default function WeatherCard() {
 
   useEffect(() => {
     fetchWeather().then((data) => {
+      console.log(data);
       setWeather(data.dataWeather.hourly);
     });
   }, []);
@@ -45,7 +46,7 @@ export default function WeatherCard() {
           <h1 className="text-xl ">Auckland</h1>
           <p className="text-black/60 dark:text-white/60">{new Date().toLocaleDateString('en-NZ', { weekday: 'short', month: 'short', day: 'numeric' })}</p>
           <p className="text-7xl">
-            {String(weather.temperature_2m[hour]).slice(0, 2)}°C
+            {Math.floor(weather.temperature_2m[hour])}°C
           </p>
           <div className="flex justify-evenly items-center pt-4">
             <div className="flex flex-col items-center">
