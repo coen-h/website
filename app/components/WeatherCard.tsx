@@ -42,6 +42,7 @@ export default function WeatherCard() {
             className="absolute -top-14 -right-14"
             width={240}
             height={240}
+            unoptimized
           />
           <h1 className="text-xl ">Auckland</h1>
           <p className="text-black/60 dark:text-white/60">{new Date().toLocaleDateString('en-NZ', { weekday: 'short', month: 'short', day: 'numeric' })}</p>

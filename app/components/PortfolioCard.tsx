@@ -11,7 +11,7 @@ export default function PortfolioCard() {
           className="flex flex-col items-center"
           target="_blank"
         >
-          <Image className="rounded-md" src={item.image} alt={item.name} width={384} height={384} />
+          <Image className="rounded-md" src={item.image} alt={item.name} width={384} height={384} unoptimized />
           <div>
             <p className="text-2xl text-center">{item.name}</p>
             <p className="w-full text-center mb-1">{item.description}</p>

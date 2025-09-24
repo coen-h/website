@@ -16,7 +16,7 @@ export default function UserCard({ user }: { user: UserItem }) {
     <div className="max-[1200px]:w-[400px] max-[450px]:w-full border-x border-y-2 dark:border-white/10 border-black/20 rounded-lg p-2">
       <div className="flex gap-4 justify-between">
         <div className="flex gap-2">
-          <Image className="rounded-full max-[1200px]:hidden" src={user.avatar_url} alt={user.name} width={96} height={96} />
+          <Image className="rounded-full max-[1200px]:hidden" unoptimized src={user.avatar_url} alt={user.name} width={96} height={96} />
           <div className="flex flex-col justify-center">
             <p>{user.name}</p>
             <p className="dark:text-neutral-500 text-neutral-600">@{user.login}</p>
