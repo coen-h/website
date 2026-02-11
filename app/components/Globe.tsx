@@ -57,7 +57,7 @@ export default function GlobeViz({ height, width }: GlobeProps) {
 
   return (
     <div className="border-x border-y-2 dark:border-white/10 border-black/20 rounded-lg max-[1400px]:hidden">
-      <div className={`flex flex-col fixed z-50 w-[550px] backdrop-blur-md px-2 py-0.5`}>
+      <div className={`flex flex-col fixed z-50 w-[550px] backdrop-blur-md px-2 py-0.5 rounded-t-lg`}>
         <div className='flex justify-between'>
           <p>WORLD VIEW</p>
           <p className="text-black/50 dark:text-white/50">GLOBAL NETWORK MAP</p>
