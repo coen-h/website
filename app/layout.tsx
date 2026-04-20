@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Playwrite_IE  } from "next/font/google";
 import "./globals.css";
 
 const fontSans = Geist({

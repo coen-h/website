@@ -45,7 +45,7 @@ export default function FileRepo({ items }: { items: RepoItem[] }) {
 
   return (
     <div data-swapy-handle className="bg-white/40 dark:bg-white/5 backdrop-blur cursor-grab active:cursor-grabbing flex-1 relative border dark:border-white/10 border-black/20 rounded-md overflow-scroll flex-grow max-[1200px]:hidden">
-      <div className="sticky top-0 flex backdrop-blur bg-white/5 gap-1.5 items-center p-1 rounded-t-lg">
+      <div className="sticky top-0 flex backdrop-blur bg-white/25 dark:bg-black/50 gap-1.5 items-center p-1 rounded-t-lg">
         <a className={`${!fileRepo ? 'opacity-25' : 'opacity-100 hover:cursor-pointer'} pl-0.5`} onClick={() => fileDirectory.length  ? setFileDirectory(prevDirectory => prevDirectory.slice(0, -1)) : setFileRepo('')}>
           <svg className="fill-black dark:fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height='24px'><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
         </a>

@@ -161,16 +161,16 @@ const services = [
 
 export default function Clock() {
   return (
-    <div className="bg-white/40 dark:bg-white/5 backdrop-blur flex flex-col justify-between gap-1">
+    <div className=" flex flex-col justify-between gap-1">
       {services.map((service) => (
         <a
           key={service.id}
-          className="flex p-0.5 justify-center gap-2 items-center border dark:border-white/10 border-black/20 rounded-lg hover:border-black/50 hover:dark:border-white/25"
+          className="bg-white/40 backdrop-blur dark:bg-white/5 flex p-0.5 justify-center gap-2 items-center border dark:border-white/10 border-black/20 rounded-lg hover:border-black/50 hover:dark:border-white/25"
           href={service.url}
           target="_blank"
         >
           {service.image}
-          <p>{service.name}</p>
+          <p className="text-light">{service.name}</p>
         </a>
       ))}
     </div>

@@ -44,9 +44,9 @@ export default function WeatherCard() {
             height={240}
             unoptimized
           />
-          <h1 className="text-xl ">Auckland</h1>
-          <p className="text-black/60 dark:text-white/60">{new Date().toLocaleDateString('en-NZ', { weekday: 'short', month: 'short', day: 'numeric' })}</p>
-          <p className="text-7xl">
+          <h1 className="text-xl">Auckland</h1>
+          <p className="text-black/60 dark:text-white/60 font-light">{new Date().toLocaleDateString('en-NZ', { weekday: 'short', month: 'short', day: 'numeric' })}</p>
+          <p className="text-7xl font-light">
             {Math.floor(weather.temperature_2m[hour])}°C
           </p>
           <div className="flex justify-evenly items-center pt-4">
