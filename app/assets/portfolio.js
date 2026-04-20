@@ -1,7 +1,7 @@
 const portfolio = [
   {
     name: 'zmov',
-    description: 'My movie site made using NextJS, Vite, and the TMDB API.',
+    description: 'My movie website template using NextJS, Vite, and the TMDB API.',
     link: 'https://github.com/coen-h/zmov',
     image: 'https://raw.githubusercontent.com/coen-h/zmov/main/screenshots/info.png',
     tags: ['nextjs', 'javascript', 'supabase']
@@ -25,7 +25,7 @@ const portfolio = [
     description: 'AI Parking Lot Monitoring, powered by Azure and NextJS.',
     link: 'https://github.com/coen-h/parkinglot',
     image: 'https://raw.githubusercontent.com/coen-h/website/main/public/screenshot.png',
-    tags: ['python', 'nextjs', 'tailwindcss'],
+    tags: ['python', 'computer_vision', 'nextjs'],
   },
   {
     name: 'website_',
@@ -34,14 +34,6 @@ const portfolio = [
     image: 'https://raw.githubusercontent.com/coen-h/website/main/public/website.png',
     tags: ['nextjs', 'tailwindcss'],
   },
-  {
-    name: 'hydralauncher_theme',
-    description: 'My theme for Hydra Launcher, an open-source gaming platform.',
-    link: 'https://github.com/hydralauncher/hydra-themes',
-    image: 'https://raw.githubusercontent.com/hydralauncher/hydra-themes/main/themes/Stray-byGYYAm5/screenshot.png',
-    tags: ['react', 'electron', 'python']
-  },
-
 ];
 
 export default portfolio;

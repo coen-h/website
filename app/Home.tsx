@@ -1,7 +1,7 @@
 "use client";
 
 import { createSwapy } from 'swapy'
-import { useEffect, useState, useRef } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import FileRepo from "./components/FileRepo";
 import UserCard from "./components/UserCard";
 import SpotifyWidget from "./components/SpotifyWidget";
@@ -32,25 +32,40 @@ type UserItem = {
   created_at?: string;
 };
 
-type SpotifyData = {
-  content: string;
-};
-
 type GithubData = {
   dataRepo: RepoItem[];
   dataUser: UserItem;
-  dataSpotify: SpotifyData;
 };
 
 interface HomeProps {
   githubData: GithubData;
 }
 
+function SwapySection({
+  slot,
+  item,
+  className = "",
+  children,
+}: {
+  slot: string;
+  item: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div data-swapy-slot={slot} className={`swapy-slot ${className}`.trim()}>
+      <div data-swapy-item={item} className="swapy-item">
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function Home({ githubData }: HomeProps) {
   const [items, setItems] = useState<RepoItem[]>([]);
   const [user, setUser] = useState<UserItem | null>(null);
-  const swapy = useRef(null)
-  const container = useRef(null)
+  const swapy = useRef<ReturnType<typeof createSwapy> | null>(null);
+  const container = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (githubData) {
@@ -61,40 +76,76 @@ export default function Home({ githubData }: HomeProps) {
 
   useEffect(() => {
     if (container.current) {
-      swapy.current = createSwapy(container.current)
-
-      swapy.current.onSwap((event) => {
-        console.log('swap', event);
-      })
+      swapy.current = createSwapy(container.current, {
+        animation: 'dynamic', 
+      });
     }
 
     return () => {
-      swapy.current?.destroy()
-    }
-  }, [])
+      swapy.current?.destroy();
+      swapy.current = null;
+    };
+  }, []);
 
   return (
-    <div className="text-black dark:text-white w-screen h-screen p-2 crt-shell">
-      <div className="p-2 w-full h-full flex flex-col justify-between backdrop-blur-md border-2 dark:border-white/10 border-black/20 rounded-xl bg-black/15 dark:bg-black/75 crt-content">
-        <div className="h-full flex justify-center gap-2">
-          <div className="flex flex-col gap-2">
-            <WeatherCard />
+    <div className="crt-shell h-screen w-screen p-2 text-black dark:text-white">
+      <div className="crt-content flex h-full flex-col justify-between overflow-hidden rounded-xl border-2 border-black/20 bg-black/40 p-2 backdrop-blur-md dark:border-white/10 dark:bg-black/75">
+        <img
+          src="https://i.redd.it/4ykpisubwlb91.jpg"
+          className="pointer-events-none absolute inset-0 h-screen w-screen object-cover opacity-25 select-none dark:hidden"
+          alt=""
+        />
+        <img
+          src="https://img.goodfon.com/original/2560x1600/0/9f/new-zealand-beach-sunset.jpg"
+          className="pointer-events-none absolute inset-0 hidden h-screen w-screen object-cover opacity-25 select-none dark:block"
+          alt=""
+        />
+        <div className="flex h-full w-full justify-center gap-2 overflow-hidden" ref={container}>
+          <div className="swapy-column w-full max-w-[400px] h-full flex flex-col">
+            {/* <SwapySection slot="weather-slot" item="weather-item" className="w-full shrink-0"> */}
+              <WeatherCard />
+            {/* </SwapySection> */}
             {user && (<div className="max-[1200px]:flex hidden"><UserCard user={user} /></div>)}
-            <Clock />
-            <AboutMe />
-            <Docker />
-            <Contact />
+            {/* <SwapySection slot="clock-slot" item="clock-item" className="w-full shrink-0"> */}
+              <Clock />
+            {/* </SwapySection> */}
+            <SwapySection slot="about-slot" item="about-item" className="swapy-slot-fill">
+              <AboutMe />
+            </SwapySection>
+            
+            {/* <SwapySection slot="contact-slot" item="contact-item" className="w-full shrink-0"> */}
+              <Contact />
+            {/* </SwapySection> */}
           </div>
 
-          <div className="flex flex-col gap-2 max-[1200px]:hidden">
-            {user && <UserCard user={user} />}
-            {items && <FileRepo items={items} />}
-            <GlobeViz height={550} width={550} />
+          <div className="swapy-column w-full max-w-[550px] max-[1200px]:hidden h-full flex flex-col">
+            {user && 
+              // <SwapySection slot="user-slot" item="user-item">
+                <UserCard user={user} />
+              // </SwapySection>
+            }
+            {items && 
+              <SwapySection slot="file-slot" item="file-item" className="swapy-slot-fill">
+                <FileRepo items={items} />
+              </SwapySection>
+            }
+            {/* <SwapySection slot="globe-slot" item="globe-item"> */}
+              <GlobeViz height={550} />
+            {/* </SwapySection> */}
           </div>
 
-          <div className="flex flex-col gap-2 max-[800px]:hidden">
-            {githubData.dataSpotify && <SpotifyWidget data={githubData.dataSpotify} />}
-            <PortfolioCard />
+          <div className="swapy-column w-full max-w-[450px] max-[800px]:hidden h-full flex flex-col">
+            {/* {githubData.dataSpotify && 
+              <SwapySection slot="spotify-slot" item="spotify-item"> */}
+                <SpotifyWidget />
+              {/* </SwapySection>
+            } */}
+            <SwapySection slot="portfolio-slot" item="portfolio-item" className="swapy-slot-fill">
+              <PortfolioCard />
+            </SwapySection>
+            {/* <SwapySection slot="docker-slot" item="docker-item" className="w-full shrink-0"> */}
+              <Docker />
+            {/* </SwapySection> */}
           </div>
         </div>
       </div>
