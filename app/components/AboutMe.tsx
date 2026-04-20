@@ -17,7 +17,7 @@ export default function AboutMe() {
       </ul>
       <p className="mb-2">
         Besides programming, I also enjoy playing guitar and the whole music space in general.
-        I'm planning on going to University for Computer Science in the near future.
+        I&apos;m planning on going to University for Computer Science in the near future.
       </p>
       <p className="font-semibold">Feel free to reach out via email.</p>
     </div>
