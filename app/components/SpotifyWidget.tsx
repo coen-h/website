@@ -16,5 +16,5 @@ export default function SpotifyWidget({ data }: { data?: SpotifyData }) {
     }
   }, [data]);
 
-  return <iframe className="w-full border-x border-y-2 dark:border-white/10 border-black/20 rounded-lg" src={iframeSrc ?? undefined}></iframe>;
+  return <iframe className="w-full" src={iframeSrc ?? undefined}></iframe>;
 }

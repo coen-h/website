@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import dynamic from "next/dynamic";
+import { csvParseRows } from "d3-dsv";
 
 const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
 
@@ -10,78 +11,90 @@ type GlobeProps = {
   width: number;
 };
 
-type CableProperties = {
-  color: string;
-  name: string;
-};
+const airportParse = ([airportId, name, city, country, iata, icao, lat, lng, alt, timezone, dst, tz, type, source]: string[]) => ({ airportId, name, city, country, iata, icao, lat, lng, alt, timezone, dst, tz, type, source });
+const routeParse = ([airline, airlineId, srcIata, srcAirportId, dstIata, dstAirportId, codeshare, stops, equipment]: string[]) => ({ airline, airlineId, srcIata, srcAirportId, dstIata, dstAirportId, codeshare, stops, equipment });
 
-type CablePath = {
-  coords: [number, number][];
-  properties: CableProperties;
-};
-
-type GeoJSONFeature = {
-  type: "Feature";
-  geometry: {
-    type: string;
-    coordinates: [number, number][] | [number, number][][];
-  };
-  properties: CableProperties;
-};
-
-type GeoJSON = {
-  type: "FeatureCollection";
-  features: GeoJSONFeature[];
-};
+const AUCKLAND_IATA = 'AKL';
+const MAP_CENTER = { lat: -36.8509, lng: 174.7645, altitude: 1 };
+const OPACITY = 0.3;
 
 export default function GlobeViz({ height, width }: GlobeProps) {
-  const [cablePaths, setCablePaths] = useState<CablePath[]>([]);
+  const globeEl = useRef<any>(null);
+  const [airports, setAirports] = useState<any[]>([]);
+  const [routes, setRoutes] = useState<any[]>([]);
+  const [hoverArc, setHoverArc] = useState<any>();
 
   useEffect(() => {
-    fetch("/cable-geo.json")
-      .then((r) => r.json())
-      .then((cablesGeo: GeoJSON) => {
-        const paths: CablePath[] = [];
-        cablesGeo.features.forEach(({ geometry, properties }) => {
-          if (geometry.type === "MultiLineString") {
-            (geometry.coordinates as [number, number][][]).forEach((coords) =>
-              paths.push({ coords, properties })
-            );
-          } else if (geometry.type === "LineString") {
-            paths.push({ coords: geometry.coordinates as [number, number][], properties });
-          }
-        });
-        setCablePaths(paths);
+    Promise.all([
+      fetch('https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat')
+        .then(res => res.text())
+        .then(d => csvParseRows(d, airportParse)),
+      fetch('https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat')
+        .then(res => res.text())
+        .then(d => csvParseRows(d, routeParse))
+    ]).then(([airportsData, routesData]) => {
+
+      const byIata: Record<string, any> = airportsData.reduce((acc: any, curr: any) => {
+        if (curr.iata) acc[curr.iata] = curr;
+        return acc;
+      }, {});
+
+      const aucklandRoutes = routesData
+        .filter((d: any) => byIata.hasOwnProperty(d.srcIata) && byIata.hasOwnProperty(d.dstIata))
+        .filter((d: any) => d.stops === '0')
+        .map((d: any) => Object.assign(d, {
+          srcAirport: byIata[d.srcIata],
+          dstAirport: byIata[d.dstIata]
+        }))
+        .filter((d: any) => d.srcAirport.iata === AUCKLAND_IATA || d.dstAirport.iata === AUCKLAND_IATA);
+
+      const activeAirportIatas = new Set();
+      aucklandRoutes.forEach((r: any) => {
+        activeAirportIatas.add(r.srcIata);
+        activeAirportIatas.add(r.dstIata);
       });
+      const filteredAirports = airportsData.filter((d: any) => activeAirportIatas.has(d.iata));
+
+      setAirports(filteredAirports);
+      setRoutes(aucklandRoutes);
+
+      setTimeout(() => {
+        if (globeEl.current) {
+          globeEl.current.pointOfView(MAP_CENTER, 4000);
+        }
+      }, 100);
+    });
   }, []);
 
   return (
-    <div className="border-x border-y-2 dark:border-white/10 border-black/20 rounded-lg max-[1400px]:hidden">
-      <div className={`flex flex-col fixed z-50 w-[550px] backdrop-blur-md px-2 py-0.5 rounded-t-lg`}>
-        <div className='flex justify-between'>
-          <p>WORLD VIEW</p>
-          <p className="text-black/50 dark:text-white/50">GLOBAL NETWORK MAP</p>
-        </div>
-        <div className="flex justify-between">
-          <p className="text-black/50 dark:text-white/50">ENDPOINT LAT/LON</p>
-          <p className="text-black/25 dark:text-white/25">36.8509, 174.7645</p>
-        </div>
-      </div>
+    <div className="border dark:border-white/10 border-black/20 rounded-lg overflow-hidden max-[1400px]:hidden">
+      
       <Globe
+        ref={globeEl}
         width={width}
         height={height}
-        globeImageUrl="//cdn.jsdelivr.net/npm/three-globe/example/img/earth-dark.jpg"
-        bumpImageUrl="//cdn.jsdelivr.net/npm/three-globe/example/img/earth-topology.png"
+        globeImageUrl="//cdn.jsdelivr.net/npm/three-globe/example/img/earth-night.jpg"
         backgroundColor="rgba(0,0,0,0)"
-        pathsData={cablePaths}
-        pathPoints="coords"
-        pathPointLat={(p) => p[1]}
-        pathPointLng={(p) => p[0]}
-        pathColor={(path: object) => (path as CablePath).properties.color}
-        pathLabel={(path: object) => (path as CablePath).properties.name}
-        pathDashLength={0.1}
-        pathDashGap={0.008}
-        pathDashAnimateTime={12000}
+        arcsData={routes}
+        arcLabel={(d: any) => `${d.airline}: ${d.srcIata} → ${d.dstIata}`}
+        arcStartLat={(d: any) => +d.srcAirport.lat}
+        arcStartLng={(d: any) => +d.srcAirport.lng}
+        arcEndLat={(d: any) => +d.dstAirport.lat}
+        arcEndLng={(d: any) => +d.dstAirport.lng}
+        arcDashLength={0.4}
+        arcDashGap={0.2}
+        arcDashAnimateTime={1500}
+        arcsTransitionDuration={0}
+        arcColor={(d: any) => {
+          const op = !hoverArc ? OPACITY : d === hoverArc ? 0.9 : OPACITY / 4;
+          return [`rgba(0, 255, 0, ${op})`, `rgba(255, 0, 0, ${op})`];
+        }}
+        onArcHover={setHoverArc}
+        pointsData={airports}
+        pointColor={() => 'orange'}
+        pointAltitude={0}
+        pointRadius={0.04}
+        pointsMerge={true}
       />
     </div>
   );

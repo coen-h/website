@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createSwapy } from 'swapy'
+import { useEffect, useState, useRef } from "react";
 import FileRepo from "./components/FileRepo";
 import UserCard from "./components/UserCard";
 import SpotifyWidget from "./components/SpotifyWidget";
@@ -48,6 +49,8 @@ interface HomeProps {
 export default function Home({ githubData }: HomeProps) {
   const [items, setItems] = useState<RepoItem[]>([]);
   const [user, setUser] = useState<UserItem | null>(null);
+  const swapy = useRef(null)
+  const container = useRef(null)
 
   useEffect(() => {
     if (githubData) {
@@ -56,10 +59,24 @@ export default function Home({ githubData }: HomeProps) {
     }
   }, [githubData]);
 
+  useEffect(() => {
+    if (container.current) {
+      swapy.current = createSwapy(container.current)
+
+      swapy.current.onSwap((event) => {
+        console.log('swap', event);
+      })
+    }
+
+    return () => {
+      swapy.current?.destroy()
+    }
+  }, [])
+
   return (
     <div className="text-black dark:text-white w-screen h-screen p-2">
       <div className="p-2 w-full h-full flex flex-col justify-between backdrop-blur-md border-2 dark:border-white/10 border-black/20 rounded-xl bg-black/15 dark:bg-black/75">
-        <div className="h-full flex justify-center gap-2">
+        <div className="h-full flex justify-center gap-2" ref={container}>
           <div className="flex flex-col gap-2">
             <WeatherCard />
             {user && (<div className="max-[1200px]:flex hidden"><UserCard user={user} /></div>)}
