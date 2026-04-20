@@ -57,8 +57,8 @@ export default function Home({ githubData }: HomeProps) {
   }, [githubData]);
 
   return (
-    <div className="text-black dark:text-white w-screen h-screen p-2">
-      <div className="p-2 w-full h-full flex flex-col justify-between backdrop-blur-md border-2 dark:border-white/10 border-black/20 rounded-xl bg-black/15 dark:bg-black/75">
+    <div className="text-black dark:text-white w-screen h-screen p-2 crt-shell">
+      <div className="p-2 w-full h-full flex flex-col justify-between backdrop-blur-md border-2 dark:border-white/10 border-black/20 rounded-xl bg-black/15 dark:bg-black/75 crt-content">
         <div className="h-full flex justify-center gap-2">
           <div className="flex flex-col gap-2">
             <WeatherCard />
