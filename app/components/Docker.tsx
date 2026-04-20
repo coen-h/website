@@ -161,7 +161,7 @@ const services = [
 
 export default function Clock() {
   return (
-    <div className="flex flex-col justify-between border-x border-y-2 dark:border-white/10 border-black/20 rounded-lg p-1 gap-1">
+    <div className="flex flex-col justify-between border dark:border-white/10 border-black/20 rounded-lg p-1 gap-1">
       {services.map((service) => (
         <a
           key={service.id}

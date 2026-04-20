@@ -3,7 +3,7 @@ import portfolio from "../assets/portfolio";
 
 export default function PortfolioCard() {
   return (
-    <div className="flex flex-col gap-4 overflow-scroll border-x border-y-2 dark:border-white/10 border-black/20 rounded-lg p-2 flex-grow">
+    <div className="flex flex-col gap-4 overflow-scroll border dark:border-white/10 border-black/20 rounded-lg p-2 flex-grow">
       {portfolio.map((item) => (
         <a
           href={item.link}

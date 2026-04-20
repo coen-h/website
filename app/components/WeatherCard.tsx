@@ -33,7 +33,7 @@ export default function WeatherCard() {
   const hour = d.getHours();
 
   return (
-    <div className="flex flex-col relative min-h-51 w-[400px] p-2 border-x-1 border-y-2 dark:border-white/10 border-black/20 rounded-lg overflow-hidden max-[1200px]:hidden">
+    <div className="flex flex-col relative min-h-51 w-[400px] p-2 border dark:border-white/10 border-black/20 rounded-lg overflow-hidden max-[1200px]:hidden">
       {weather ? (
         <>
           <Image

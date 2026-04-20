@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createSwapy } from 'swapy'
+import { useEffect, useState, useRef } from "react";
 import FileRepo from "./components/FileRepo";
 import UserCard from "./components/UserCard";
 import SpotifyWidget from "./components/SpotifyWidget";
@@ -48,6 +49,8 @@ interface HomeProps {
 export default function Home({ githubData }: HomeProps) {
   const [items, setItems] = useState<RepoItem[]>([]);
   const [user, setUser] = useState<UserItem | null>(null);
+  const swapy = useRef(null)
+  const container = useRef(null)
 
   useEffect(() => {
     if (githubData) {
@@ -55,6 +58,20 @@ export default function Home({ githubData }: HomeProps) {
       setUser(githubData.dataUser);
     }
   }, [githubData]);
+
+  useEffect(() => {
+    if (container.current) {
+      swapy.current = createSwapy(container.current)
+
+      swapy.current.onSwap((event) => {
+        console.log('swap', event);
+      })
+    }
+
+    return () => {
+      swapy.current?.destroy()
+    }
+  }, [])
 
   return (
     <div className="text-black dark:text-white w-screen h-screen p-2 crt-shell">

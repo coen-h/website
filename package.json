@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "d3-dsv": "^3.0.1",
     "next": "^15.5.12",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-globe.gl": "^2.33.2"
+    "react-globe.gl": "^2.33.2",
+    "swapy": "^1.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
