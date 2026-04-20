@@ -1,6 +1,6 @@
 export default function AboutMe() {
   return (
-    <div data-swapy-handle className="bg-white/40 dark:bg-white/5 backdrop-blur cursor-grab active:cursor-grabbing w-full h-full p-2 border dark:border-white/10 border-black/20 rounded-lg text-sm overflow-scroll">
+    <div data-swapy-handle className="bg-white/40 dark:bg-white/5 backdrop-blur cursor-grab active:cursor-grabbing w-full h-full p-2 border dark:border-white/10 border-black/20 rounded-md text-sm overflow-scroll">
       <p className="text-xl font-semibold mb-2">About me:</p>
       <p className="mb-2">
         I&apos;m Coen, a Front-end developer and student from New Zealand. I enjoy

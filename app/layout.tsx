@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono  } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 
-const fontSans = JetBrains_Mono({
-  variable: "--font-jetbrains_mono",
+const fontSans = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
 });
 

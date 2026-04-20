@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 * {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist', serif;
   transition: all 0.25s ease-out;
 }
 
