@@ -15,7 +15,7 @@ export default function Clock() {
 
   return (
     <div className="bg-white/40 dark:bg-white/5 backdrop-blur flex justify-center items-center border dark:border-white/10 border-black/20 w-full rounded-md">
-      <p className={`${fontPlay.className} text-4xl max-[450px]:text-4xl max-[350px]:text-3xl max-[300px]:text-2xl font-semibold p-6`}>{time.toLocaleTimeString(["en-NZ"], {hourCycle: 'h23'})} NZT</p>
+      <p className={`${fontPlay.className} text-4xl text-center max-[450px]:text-4xl max-[350px]:text-3xl font-semibold py-6`}>{time.toLocaleTimeString(["en-NZ"], {hourCycle: 'h23'})} NZT</p>
     </div>
   );
 }
