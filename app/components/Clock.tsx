@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Playwrite_IE  } from "next/font/google";
+import { Playwrite_HU  } from "next/font/google";
 
-const fontPlay = Playwrite_IE({
-  variable: "--font-playwrite_ie"
+const fontPlay = Playwrite_HU({
+  variable: "--font-playwrite_hu"
 });
 
 export default function Clock() {

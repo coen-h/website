@@ -105,7 +105,7 @@ export default function Home({ githubData }: HomeProps) {
             {/* <SwapySection slot="weather-slot" item="weather-item" className="w-full shrink-0"> */}
               <WeatherCard />
             {/* </SwapySection> */}
-            {user && (<div className="max-[1200px]:flex hidden"><UserCard user={user} /></div>)}
+            {user && (<div className="max-[1400px]:flex hidden"><UserCard user={user} /></div>)}
             {/* <SwapySection slot="clock-slot" item="clock-item" className="w-full shrink-0"> */}
               <Clock />
             {/* </SwapySection> */}
@@ -118,23 +118,27 @@ export default function Home({ githubData }: HomeProps) {
             {/* </SwapySection> */}
           </div>
 
-          <div className="swapy-column w-full max-w-[550px] max-[1200px]:hidden h-full flex flex-col">
-            {user && 
+          <div className='max-[1400px]:hidden'>
+            <div className="swapy-column w-full max-w-[550px] h-full flex flex-col">
+              {user && 
               // <SwapySection slot="user-slot" item="user-item">
-                <UserCard user={user} />
+                  <UserCard user={user} />
               // </SwapySection>
-            }
-            {items && 
-              <SwapySection slot="file-slot" item="file-item" className="swapy-slot-fill">
-                <FileRepo items={items} />
-              </SwapySection>
-            }
-            {/* <SwapySection slot="globe-slot" item="globe-item"> */}
-              <GlobeViz height={550} />
+              }
+              {items && 
+                <SwapySection slot="file-slot" item="file-item" className="swapy-slot-fill">
+                  <FileRepo items={items} />
+                </SwapySection>
+              }
+              {/* <SwapySection slot="globe-slot" item="globe-item"> */}
+                <GlobeViz height={550} />
             {/* </SwapySection> */}
+            </div>
           </div>
+          
 
-          <div className="swapy-column w-full max-w-[450px] max-[800px]:hidden h-full flex flex-col">
+          <div className='max-[900px]:hidden'>
+            <div className="swapy-column w-full max-w-[450px] h-full flex flex-col">
             {/* {githubData.dataSpotify && 
               <SwapySection slot="spotify-slot" item="spotify-item"> */}
                 <SpotifyWidget />
@@ -146,6 +150,7 @@ export default function Home({ githubData }: HomeProps) {
             {/* <SwapySection slot="docker-slot" item="docker-item" className="w-full shrink-0"> */}
               <Docker />
             {/* </SwapySection> */}
+            </div>
           </div>
         </div>
       </div>
