@@ -13,7 +13,7 @@ type UserItem = {
 
 export default function UserCard({ user }: { user: UserItem }) {
   return (
-    <div className="bg-white/40 dark:bg-white/5 backdrop-blur w-full border dark:border-white/10 border-black/20 rounded-md p-2">
+    <div className="bg-white/40 dark:bg-white/5 backdrop-blur w-full border dark:border-white/10 border-black/30 rounded-md p-2">
       <div className="flex gap-4 justify-between">
         <div className="flex gap-2">
           <Image className="rounded-lg mr-1" unoptimized src={user.avatar_url} alt={user.name} width={80} height={80} />

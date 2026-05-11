@@ -152,7 +152,7 @@ export default function GlobeViz({ height }: GlobeProps) {
   return (
     <div
       ref={wrapperRef}
-      className="bg-white/40 dark:bg-white/5 backdrop-blur min-w-0 overflow-hidden rounded-md border border-black/20 dark:border-white/10"
+      className="bg-white/40 dark:bg-white/5 backdrop-blur min-w-0 overflow-hidden rounded-md border border-black/30 dark:border-white/10"
     >
       {globeWidth > 0 && (
         <Globe

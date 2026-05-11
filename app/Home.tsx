@@ -1,7 +1,7 @@
 "use client";
 
 import { createSwapy } from 'swapy'
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FileRepo from "./components/FileRepo";
 import UserCard from "./components/UserCard";
 import SpotifyWidget from "./components/SpotifyWidget";
@@ -41,25 +41,25 @@ interface HomeProps {
   githubData: GithubData;
 }
 
-function SwapySection({
-  slot,
-  item,
-  className = "",
-  children,
-}: {
-  slot: string;
-  item: string;
-  className?: string;
-  children: ReactNode;
-}) {
-  return (
-    <div data-swapy-slot={slot} className={`swapy-slot ${className}`.trim()}>
-      <div data-swapy-item={item} className="swapy-item">
-        {children}
-      </div>
-    </div>
-  );
-}
+// function SwapySection({
+//   slot,
+//   item,
+//   className = "",
+//   children,
+// }: {
+//   slot: string;
+//   item: string;
+//   className?: string;
+//   children: ReactNode;
+// }) {
+//   return (
+//     <div data-swapy-slot={slot} className={`swapy-slot ${className}`.trim()}>
+//       <div data-swapy-item={item} className="swapy-item">
+//         {children}
+//       </div>
+//     </div>
+//   );
+// }
 
 export default function Home({ githubData }: HomeProps) {
   const [items, setItems] = useState<RepoItem[]>([]);
@@ -109,9 +109,9 @@ export default function Home({ githubData }: HomeProps) {
             {/* <SwapySection slot="clock-slot" item="clock-item" className="w-full shrink-0"> */}
               <Clock />
             {/* </SwapySection> */}
-            <SwapySection slot="about-slot" item="about-item" className="swapy-slot-fill">
+            {/* <SwapySection slot="about-slot" item="about-item" className="swapy-slot-fill"> */}
               <AboutMe />
-            </SwapySection>
+            {/* </SwapySection> */}
             
             {/* <SwapySection slot="contact-slot" item="contact-item" className="w-full shrink-0"> */}
               <Contact />
@@ -126,9 +126,9 @@ export default function Home({ githubData }: HomeProps) {
               // </SwapySection>
               }
               {items && 
-                <SwapySection slot="file-slot" item="file-item" className="swapy-slot-fill">
+                // <SwapySection slot="file-slot" item="file-item" className="swapy-slot-fill">
                   <FileRepo items={items} />
-                </SwapySection>
+                // </SwapySection>
               }
               {/* <SwapySection slot="globe-slot" item="globe-item"> */}
                 <GlobeViz height={550} />
@@ -144,9 +144,9 @@ export default function Home({ githubData }: HomeProps) {
                 <SpotifyWidget />
               {/* </SwapySection>
             } */}
-            <SwapySection slot="portfolio-slot" item="portfolio-item" className="swapy-slot-fill">
+            {/* <SwapySection slot="portfolio-slot" item="portfolio-item" className="swapy-slot-fill"> */}
               <PortfolioCard />
-            </SwapySection>
+            {/* </SwapySection> */}
             {/* <SwapySection slot="docker-slot" item="docker-item" className="w-full shrink-0"> */}
               <Docker />
             {/* </SwapySection> */}

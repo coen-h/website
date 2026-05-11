@@ -17,7 +17,7 @@ export default function SpotifyWidget() {
   // }, [data]);
 
   return (
-    <div className="h-32 bg-white/40 dark:bg-white/5 backdrop-blur border dark:border-white/10 border-black/20 rounded-md w-full p-1 flex flex-col items-center justify-between">
+    <div className="h-32 bg-white/40 dark:bg-white/5 backdrop-blur border dark:border-white/10 border-black/30 rounded-md w-full p-1 flex flex-col items-center justify-between">
       <p className="text-sm text-neutral-700 dark:text-neutral-400 text-center">
         because of spotifys recent restrictions on their api, many developers no longer can use their api for projects, 
         with of course the exception being for premium users. 

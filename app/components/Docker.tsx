@@ -165,7 +165,7 @@ export default function Clock() {
       {services.map((service) => (
         <a
           key={service.id}
-          className="bg-white/40 backdrop-blur dark:bg-white/5 flex p-0.5 justify-center gap-2 items-center border dark:border-white/10 border-black/20 rounded-lg hover:border-black/50 hover:dark:border-white/25"
+          className="bg-white/40 backdrop-blur dark:bg-white/5 flex p-0.5 justify-center gap-2 items-center border dark:border-white/10 border-black/30 rounded-lg hover:border-black/50 hover:dark:border-white/25"
           href={service.url}
           target="_blank"
         >

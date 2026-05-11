@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${fontSans.variable} antialiased m-0 bg-gradient-to-br from-20% to-80% from-neutral-300 via-emerald-50 to-neutral-200 dark:from-neutral-600 dark:via-emerald-950 dark:to-neutral-800`}
+        className={`${fontSans.variable} antialiased m-0 bg-gradient-to-br from-20% to-80% from-neutral-500 via-emerald-200/20 to-neutral-400 dark:from-neutral-600 dark:via-emerald-950 dark:to-neutral-800`}
       >
         {children}
       </body>
